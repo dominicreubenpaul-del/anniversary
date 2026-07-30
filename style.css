@@ -1,0 +1,1201 @@
+/* ==========================================================
+   ANNIVERSARY
+   PHONE  = CINEMATIC TWO-PHOTO POSTER
+   DESKTOP = FULL-SCREEN EYES COUNTDOWN
+   ========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: #000;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+    background: #000;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+}
+
+
+/* ==========================================================
+   COMMON
+   ========================================================== */
+
+.landing {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #000;
+}
+
+.photo-layer {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+}
+
+.middle-darkness,
+.cinematic-grade,
+.vignette,
+.red-glow {
+    position: absolute;
+    pointer-events: none;
+}
+
+.content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+
+/* ==========================================================
+   DESKTOP
+   ========================================================== */
+
+@media (min-width: 651px) {
+
+    .landing {
+        height: 100vh;
+        min-height: 600px;
+    }
+
+
+    /* EYES ONLY */
+
+    .photo-eyes {
+        z-index: 1;
+        inset: 0;
+        height: 100%;
+
+        background-image: url("photo1.jpg");
+        background-size: cover;
+        background-position: center center;
+
+        filter:
+            brightness(.58)
+            contrast(1.12)
+            saturate(.75);
+
+        animation: desktopZoom 20s ease-in-out infinite alternate;
+    }
+
+
+    /* REMOVE HANDS COMPLETELY */
+
+    .photo-hands {
+        display: none;
+    }
+
+
+    @keyframes desktopZoom {
+
+        from {
+            transform: scale(1.01);
+        }
+
+        to {
+            transform: scale(1.055);
+        }
+    }
+
+
+    /* CINEMATIC DARKENING */
+
+    .middle-darkness {
+        z-index: 2;
+        inset: 0;
+
+        background:
+            linear-gradient(
+                to bottom,
+                rgba(0,0,0,.10),
+                rgba(0,0,0,.25) 45%,
+                rgba(0,0,0,.60)
+            );
+    }
+
+
+    .cinematic-grade {
+        z-index: 3;
+        inset: 0;
+
+        background:
+            radial-gradient(
+                ellipse at center,
+                transparent 0%,
+                rgba(25,0,0,.12) 48%,
+                rgba(0,0,0,.60) 100%
+            );
+    }
+
+
+    .red-glow {
+        z-index: 4;
+
+        left: 50%;
+        top: 50%;
+
+        width: 900px;
+        height: 600px;
+
+        transform: translate(-50%, -50%);
+
+        background:
+            radial-gradient(
+                ellipse,
+                rgba(255,20,25,.13),
+                transparent 68%
+            );
+
+        filter: blur(40px);
+    }
+
+
+    .vignette {
+        z-index: 5;
+        inset: 0;
+
+        box-shadow:
+            inset 0 0 180px 60px rgba(0,0,0,.9);
+    }
+
+
+    /* CENTER EVERYTHING */
+
+    .content {
+        height: 100vh;
+
+        justify-content: center;
+
+        padding: 0 30px;
+
+        transform: translateY(-10px);
+    }
+
+
+    /* TITLE */
+
+    .title h1 {
+        font-family: "Cormorant Garamond", Georgia, serif;
+
+        font-size: clamp(4rem, 7vw, 7.2rem);
+
+        font-weight: 500;
+
+        line-height: .88;
+
+        letter-spacing: .15em;
+
+        padding-left: .15em;
+
+        color: #f8f4f1;
+
+        text-shadow:
+            0 4px 20px #000,
+            0 0 40px #000;
+    }
+
+
+    .title h2 {
+        margin-top: 20px;
+
+        font-size: clamp(1.25rem, 2.4vw, 2.4rem);
+
+        font-weight: 400;
+
+        letter-spacing: .65em;
+
+        padding-left: .65em;
+
+        color: #ff555a;
+
+        text-shadow:
+            0 0 7px #ff3035,
+            0 0 25px rgba(255,0,0,.7);
+    }
+
+
+    /* HEART LINE */
+
+    .heart-divider {
+        width: min(630px, 65vw);
+
+        display: flex;
+        align-items: center;
+
+        gap: 18px;
+
+        margin: 27px 0 35px;
+    }
+
+
+    .heart-divider span {
+        flex: 1;
+        height: 1px;
+
+        background:
+            linear-gradient(
+                to right,
+                transparent,
+                #ff4147
+            );
+    }
+
+
+    .heart-divider span:last-child {
+        background:
+            linear-gradient(
+                to left,
+                transparent,
+                #ff4147
+            );
+    }
+
+
+    .heart {
+        color: #ff555a;
+        font-size: 2rem;
+
+        text-shadow:
+            0 0 10px #ff2028;
+
+        animation: heartbeat 1.5s infinite;
+    }
+
+
+    /* COUNTDOWN */
+
+    .countdown {
+        width: min(1050px, 92vw);
+
+        display: flex;
+
+        justify-content: center;
+        align-items: flex-start;
+
+        gap: clamp(6px, 1.3vw, 22px);
+    }
+
+
+    .time-box {
+        width: clamp(80px, 10vw, 145px);
+    }
+
+
+    .number {
+        font-family: "Bebas Neue", Impact, sans-serif;
+
+        font-size: clamp(4rem, 7vw, 7.2rem);
+
+        line-height: .9;
+
+        color: #ff6265;
+
+        text-shadow:
+            0 0 5px #ff5a5a,
+            0 0 20px rgba(255,0,0,.65);
+    }
+
+
+    .colon {
+        font-family: "Bebas Neue", Impact, sans-serif;
+
+        font-size: clamp(3.5rem, 6vw, 6rem);
+
+        line-height: .9;
+
+        color: #ff555a;
+    }
+
+
+    .label {
+        margin-top: 14px;
+
+        font-size: clamp(.55rem, .75vw, .75rem);
+
+        letter-spacing: .22em;
+
+        color: #fff;
+    }
+
+
+    /* DATE */
+
+    .date {
+        margin-top: 38px;
+
+        font-size: clamp(.75rem, 1.15vw, 1.05rem);
+
+        letter-spacing: .55em;
+
+        padding-left: .55em;
+    }
+
+
+    /* ECG */
+
+    .ecg-divider {
+        width: min(500px, 55vw);
+
+        display: flex;
+        align-items: center;
+
+        margin: 18px 0 15px;
+    }
+
+
+    .ecg-divider span {
+        flex: 1;
+        height: 1px;
+
+        background:
+            linear-gradient(
+                to right,
+                transparent,
+                #ff4147
+            );
+    }
+
+
+    .ecg-divider span:last-child {
+        background:
+            linear-gradient(
+                to left,
+                transparent,
+                #ff4147
+            );
+    }
+
+
+    .ecg {
+        width: 60px;
+        height: 30px;
+    }
+
+
+    .ecg polyline {
+        fill: none;
+        stroke: #ff454b;
+        stroke-width: 2;
+    }
+
+
+    .forever {
+        font-size: clamp(.58rem, .8vw, .82rem);
+
+        letter-spacing: .38em;
+
+        padding-left: .38em;
+    }
+
+
+    .always {
+        margin-top: 12px;
+
+        font-family: "Allura", cursive;
+
+        font-size: clamp(2rem, 3vw, 3rem);
+
+        color: #ff4d52;
+
+        text-shadow:
+            0 0 8px rgba(255,20,20,.8);
+    }
+
+
+    .small-heart {
+        display: inline-block;
+        animation: heartbeat 1.5s infinite;
+    }
+
+
+    /* No scroll prompt on desktop */
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+
+
+/* ==========================================================
+   PHONE
+   Full two-photo cinematic poster
+   ========================================================== */
+
+@media (max-width: 650px) {
+
+    .landing {
+        height: 1450px;
+        min-height: 1450px;
+    }
+
+
+    /* ======================================================
+       EYES — TOP
+       ====================================================== */
+
+    .photo-eyes {
+        z-index: 1;
+
+        top: 0;
+
+        height: 600px;
+
+        background-image: url("photo1.jpg");
+
+        background-size: cover;
+
+        background-position: center 35%;
+
+        filter:
+            brightness(.82)
+            contrast(1.12)
+            saturate(.82);
+
+        -webkit-mask-image:
+            linear-gradient(
+                to bottom,
+
+                #000 0%,
+                #000 56%,
+
+                rgba(0,0,0,.95) 68%,
+
+                rgba(0,0,0,.50) 84%,
+
+                transparent 100%
+            );
+
+        mask-image:
+            linear-gradient(
+                to bottom,
+
+                #000 0%,
+                #000 56%,
+
+                rgba(0,0,0,.95) 68%,
+
+                rgba(0,0,0,.50) 84%,
+
+                transparent 100%
+            );
+    }
+
+
+    /* ======================================================
+       HANDS — BOTTOM
+       ====================================================== */
+
+    .photo-hands {
+        z-index: 1;
+
+        bottom: 0;
+
+        height: 930px;
+
+        background-image: url("photo2.jpg");
+
+        background-size: cover;
+
+        background-position: center center;
+
+        filter:
+            brightness(.83)
+            contrast(1.08)
+            saturate(.82);
+
+        -webkit-mask-image:
+            linear-gradient(
+                to bottom,
+
+                transparent 0%,
+
+                rgba(0,0,0,.15) 8%,
+
+                rgba(0,0,0,.65) 25%,
+
+                #000 42%,
+
+                #000 100%
+            );
+
+        mask-image:
+            linear-gradient(
+                to bottom,
+
+                transparent 0%,
+
+                rgba(0,0,0,.15) 8%,
+
+                rgba(0,0,0,.65) 25%,
+
+                #000 42%,
+
+                #000 100%
+            );
+    }
+
+
+    /* ======================================================
+       PHOTO BLENDING
+       ====================================================== */
+
+    .middle-darkness {
+        z-index: 2;
+
+        top: 350px;
+
+        left: 0;
+
+        width: 100%;
+
+        height: 720px;
+
+        background:
+            linear-gradient(
+                to bottom,
+
+                transparent 0%,
+
+                rgba(0,0,0,.15) 10%,
+
+                rgba(0,0,0,.50) 27%,
+
+                rgba(0,0,0,.74) 48%,
+
+                rgba(0,0,0,.64) 66%,
+
+                rgba(0,0,0,.20) 86%,
+
+                transparent 100%
+            );
+    }
+
+
+    .cinematic-grade {
+        z-index: 3;
+
+        inset: 0;
+
+        background:
+
+            linear-gradient(
+                to bottom,
+
+                rgba(20,0,0,.08),
+
+                transparent 25%,
+
+                rgba(0,0,0,.12) 60%,
+
+                rgba(0,0,0,.32)
+            ),
+
+            radial-gradient(
+                ellipse at 50% 32%,
+
+                transparent 0%,
+
+                rgba(30,0,0,.08) 48%,
+
+                rgba(0,0,0,.42) 100%
+            );
+    }
+
+
+    .red-glow {
+        z-index: 4;
+
+        top: 280px;
+
+        left: 0;
+
+        width: 100%;
+
+        height: 650px;
+
+        background:
+            radial-gradient(
+                ellipse,
+
+                rgba(255,25,30,.12),
+
+                transparent 70%
+            );
+
+        filter: blur(35px);
+    }
+
+
+    .vignette {
+        z-index: 5;
+
+        inset: 0;
+
+        box-shadow:
+            inset 0 0 85px 18px rgba(0,0,0,.82);
+    }
+
+
+    /* ======================================================
+       CONTENT
+       ====================================================== */
+
+    .content {
+        width: 100%;
+
+        padding:
+            285px
+            10px
+            0;
+    }
+
+
+    /* ======================================================
+       TITLE
+       ====================================================== */
+
+    .title {
+        width: 100%;
+    }
+
+
+    .title h1 {
+        font-family:
+            "Cormorant Garamond",
+            Georgia,
+            serif;
+
+        font-size: clamp(
+            2.2rem,
+            10.5vw,
+            3.25rem
+        );
+
+        font-weight: 500;
+
+        line-height: 1;
+
+        letter-spacing: .065em;
+
+        padding-left: .065em;
+
+        white-space: nowrap;
+
+        color: #f7f3f0;
+
+        text-shadow:
+            0 3px 15px #000,
+            0 0 30px #000;
+    }
+
+
+    .title h2 {
+        margin-top: 14px;
+
+        font-size: clamp(
+            .95rem,
+            4.8vw,
+            1.35rem
+        );
+
+        font-weight: 400;
+
+        letter-spacing: .38em;
+
+        padding-left: .38em;
+
+        white-space: nowrap;
+
+        color: #ff575c;
+
+        text-shadow:
+            0 0 7px #ff3338,
+            0 0 18px rgba(255,0,0,.75);
+    }
+
+
+    /* ======================================================
+       HEART DIVIDER
+       ====================================================== */
+
+    .heart-divider {
+        width: 78%;
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        margin:
+            25px
+            auto
+            48px;
+    }
+
+
+    .heart-divider span {
+        flex: 1;
+
+        height: 1px;
+
+        background:
+            linear-gradient(
+                to right,
+                transparent,
+                #ff4147
+            );
+    }
+
+
+    .heart-divider span:last-child {
+        background:
+            linear-gradient(
+                to left,
+                transparent,
+                #ff4147
+            );
+    }
+
+
+    .heart {
+        color: #ff555a;
+
+        font-size: 1.75rem;
+
+        text-shadow:
+            0 0 8px #ff2028;
+
+        animation:
+            heartbeat
+            1.5s
+            infinite;
+    }
+
+
+    /* ======================================================
+       TIMER
+       ====================================================== */
+
+    .countdown {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            1fr
+            auto
+            1fr
+            auto
+            1fr
+            auto
+            1fr
+            auto
+            1fr;
+
+        align-items: start;
+
+        column-gap: 1px;
+    }
+
+
+    .time-box {
+        width: auto;
+
+        min-width: 0;
+    }
+
+
+    .number {
+        font-family:
+            "Bebas Neue",
+            Impact,
+            sans-serif;
+
+        font-size: clamp(
+            2.55rem,
+            11.5vw,
+            3.55rem
+        );
+
+        line-height: .9;
+
+        letter-spacing: 0;
+
+        white-space: nowrap;
+
+        color: #ff6265;
+
+        text-shadow:
+            0 0 4px #ff5a5a,
+            0 0 15px rgba(255,0,0,.7);
+    }
+
+
+    .colon {
+        font-family:
+            "Bebas Neue",
+            Impact,
+            sans-serif;
+
+        font-size: clamp(
+            1.8rem,
+            7.5vw,
+            2.5rem
+        );
+
+        line-height: .9;
+
+        color: #ff555a;
+    }
+
+
+    .label {
+        margin-top: 13px;
+
+        font-size: clamp(
+            .3rem,
+            1.4vw,
+            .41rem
+        );
+
+        letter-spacing: .02em;
+
+        white-space: nowrap;
+
+        color: #fff;
+    }
+
+
+    /* ======================================================
+       DATE
+       ====================================================== */
+
+    .date {
+        margin-top: 60px;
+
+        font-size: clamp(
+            .62rem,
+            2.7vw,
+            .75rem
+        );
+
+        letter-spacing: .27em;
+
+        padding-left: .27em;
+
+        white-space: nowrap;
+    }
+
+
+    /* ======================================================
+       ECG
+       ====================================================== */
+
+    .ecg-divider {
+        width: 70%;
+
+        display: flex;
+
+        align-items: center;
+
+        margin:
+            28px
+            auto
+            28px;
+    }
+
+
+    .ecg-divider span {
+        flex: 1;
+
+        height: 1px;
+
+        background:
+            linear-gradient(
+                to right,
+                transparent,
+                #ff4147
+            );
+    }
+
+
+    .ecg-divider span:last-child {
+        background:
+            linear-gradient(
+                to left,
+                transparent,
+                #ff4147
+            );
+    }
+
+
+    .ecg {
+        width: 52px;
+
+        height: 30px;
+    }
+
+
+    .ecg polyline {
+        fill: none;
+
+        stroke: #ff454b;
+
+        stroke-width: 2;
+    }
+
+
+    /* ======================================================
+       TEXT
+       ====================================================== */
+
+    .forever {
+        font-size: clamp(
+            .45rem,
+            1.9vw,
+            .55rem
+        );
+
+        letter-spacing: .16em;
+
+        padding-left: .16em;
+
+        white-space: nowrap;
+    }
+
+
+    .always {
+        margin-top: 18px;
+
+        font-family:
+            "Allura",
+            cursive;
+
+        font-size: clamp(
+            1.9rem,
+            8vw,
+            2.4rem
+        );
+
+        color: #ff4d52;
+
+        white-space: nowrap;
+
+        text-shadow:
+            0 0 8px rgba(255,20,20,.8);
+    }
+
+
+    .small-heart {
+        display: inline-block;
+
+        animation:
+            heartbeat
+            1.5s
+            infinite;
+    }
+
+
+    /* ======================================================
+       SCROLL
+       ====================================================== */
+
+    .scroll-indicator {
+        position: absolute;
+
+        z-index: 10;
+
+        left: 50%;
+
+        bottom: 28px;
+
+        transform: translateX(-50%);
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+
+    .mouse {
+        position: relative;
+
+        width: 24px;
+
+        height: 40px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.95);
+
+        border-radius: 20px;
+    }
+
+
+    .wheel {
+        position: absolute;
+
+        top: 6px;
+
+        left: 50%;
+
+        width: 2px;
+
+        height: 7px;
+
+        transform: translateX(-50%);
+
+        background: #ff4449;
+
+        border-radius: 5px;
+
+        animation:
+            wheelMove
+            1.6s
+            infinite;
+    }
+
+
+    .arrow {
+        margin-top: 4px;
+
+        font-size: 1.1rem;
+
+        animation:
+            arrowMove
+            1.3s
+            infinite;
+    }
+
+
+    .scroll-indicator p {
+        margin-top: 7px;
+
+        font-size: .42rem;
+
+        letter-spacing: .42em;
+
+        padding-left: .42em;
+
+        white-space: nowrap;
+    }
+}
+
+
+/* ==========================================================
+   VERY SMALL PHONE
+   ========================================================== */
+
+@media (max-width: 380px) {
+
+    .title h1 {
+        font-size: 2.05rem;
+        letter-spacing: .05em;
+        padding-left: .05em;
+    }
+
+    .title h2 {
+        font-size: .88rem;
+    }
+
+    .number {
+        font-size: 2.35rem;
+    }
+
+    .colon {
+        font-size: 1.7rem;
+    }
+}
+
+
+/* ==========================================================
+   ANIMATIONS
+   ========================================================== */
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.2);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.12);
+    }
+
+    60% {
+        transform: scale(1);
+    }
+}
+
+
+@keyframes wheelMove {
+
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 0);
+    }
+
+    25% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, 13px);
+    }
+}
+
+
+@keyframes arrowMove {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(5px);
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+    }
+}
