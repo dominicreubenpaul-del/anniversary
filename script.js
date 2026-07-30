@@ -4,7 +4,8 @@
    Target:
    19 November 2026
    12:00 AM IST
-   ========================================================== */
+========================================================== */
+
 
 const targetDate =
     new Date("2026-11-19T00:00:00+05:30");
@@ -26,16 +27,20 @@ const secondsElement =
     document.getElementById("seconds");
 
 
+/* ==========================================================
+   TWO DIGITS
+========================================================== */
+
 function twoDigits(value) {
 
     return String(value).padStart(2, "0");
+
 }
 
 
-
 /* ==========================================================
-   ADD CALENDAR MONTHS SAFELY
-   ========================================================== */
+   SAFELY ADD CALENDAR MONTHS
+========================================================== */
 
 function addCalendarMonths(date, months) {
 
@@ -57,23 +62,17 @@ function addCalendarMonths(date, months) {
 
     const daysInMonth =
         new Date(
-
             result.getFullYear(),
-
             result.getMonth() + 1,
-
             0
-
         ).getDate();
 
 
     result.setDate(
-
         Math.min(
             originalDay,
             daysInMonth
         )
-
     );
 
 
@@ -81,10 +80,9 @@ function addCalendarMonths(date, months) {
 }
 
 
-
 /* ==========================================================
    CALCULATE COUNTDOWN
-   ========================================================== */
+========================================================== */
 
 function calculateCountdown(now) {
 
@@ -132,7 +130,8 @@ function calculateCountdown(now) {
         afterMonths.getTime();
 
 
-    const SECOND = 1000;
+    const SECOND =
+        1000;
 
     const MINUTE =
         SECOND * 60;
@@ -150,7 +149,8 @@ function calculateCountdown(now) {
         );
 
 
-    difference %= DAY;
+    difference %=
+        DAY;
 
 
     const hours =
@@ -159,7 +159,8 @@ function calculateCountdown(now) {
         );
 
 
-    difference %= HOUR;
+    difference %=
+        HOUR;
 
 
     const minutes =
@@ -168,7 +169,8 @@ function calculateCountdown(now) {
         );
 
 
-    difference %= MINUTE;
+    difference %=
+        MINUTE;
 
 
     const seconds =
@@ -178,21 +180,18 @@ function calculateCountdown(now) {
 
 
     return {
-
         months,
         days,
         hours,
         minutes,
         seconds
-
     };
 }
 
 
-
 /* ==========================================================
    ANNIVERSARY REACHED
-   ========================================================== */
+========================================================== */
 
 function showAnniversary() {
 
@@ -217,10 +216,9 @@ function showAnniversary() {
 }
 
 
-
 /* ==========================================================
-   UPDATE TIMER
-   ========================================================== */
+   UPDATE COUNTDOWN
+========================================================== */
 
 function updateCountdown() {
 
@@ -261,13 +259,12 @@ function updateCountdown() {
 }
 
 
-
-/* Run immediately */
+/* ==========================================================
+   START
+========================================================== */
 
 updateCountdown();
 
-
-/* Update every second */
 
 setInterval(
     updateCountdown,
