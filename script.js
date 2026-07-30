@@ -1,7 +1,6 @@
 /* ==========================================================
    ANNIVERSARY COUNTDOWN
 
-   Target:
    19 November 2026
    12:00 AM IST
 ========================================================== */
@@ -39,7 +38,7 @@ function twoDigits(value) {
 
 
 /* ==========================================================
-   SAFELY ADD CALENDAR MONTHS
+   ADD CALENDAR MONTHS SAFELY
 ========================================================== */
 
 function addCalendarMonths(date, months) {
@@ -47,13 +46,11 @@ function addCalendarMonths(date, months) {
     const result =
         new Date(date.getTime());
 
-
     const originalDay =
         result.getDate();
 
 
     result.setDate(1);
-
 
     result.setMonth(
         result.getMonth() + months
@@ -130,8 +127,7 @@ function calculateCountdown(now) {
         afterMonths.getTime();
 
 
-    const SECOND =
-        1000;
+    const SECOND = 1000;
 
     const MINUTE =
         SECOND * 60;
@@ -149,8 +145,7 @@ function calculateCountdown(now) {
         );
 
 
-    difference %=
-        DAY;
+    difference %= DAY;
 
 
     const hours =
@@ -159,8 +154,7 @@ function calculateCountdown(now) {
         );
 
 
-    difference %=
-        HOUR;
+    difference %= HOUR;
 
 
     const minutes =
@@ -169,8 +163,7 @@ function calculateCountdown(now) {
         );
 
 
-    difference %=
-        MINUTE;
+    difference %= MINUTE;
 
 
     const seconds =
@@ -195,20 +188,15 @@ function calculateCountdown(now) {
 
 function showAnniversary() {
 
-    monthsElement.textContent =
-        "00";
+    monthsElement.textContent = "00";
 
-    daysElement.textContent =
-        "00";
+    daysElement.textContent = "00";
 
-    hoursElement.textContent =
-        "00";
+    hoursElement.textContent = "00";
 
-    minutesElement.textContent =
-        "00";
+    minutesElement.textContent = "00";
 
-    secondsElement.textContent =
-        "00";
+    secondsElement.textContent = "00";
 
 
     document.title =
@@ -217,7 +205,7 @@ function showAnniversary() {
 
 
 /* ==========================================================
-   UPDATE COUNTDOWN
+   UPDATE
 ========================================================== */
 
 function updateCountdown() {
@@ -256,6 +244,7 @@ function updateCountdown() {
 
     secondsElement.textContent =
         twoDigits(time.seconds);
+
 }
 
 
