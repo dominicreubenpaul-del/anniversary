@@ -1,7 +1,21 @@
 /* ==========================================================
    ANNIVERSARY
-   PHONE  = CINEMATIC TWO-PHOTO POSTER
-   DESKTOP = FULL-SCREEN EYES COUNTDOWN
+
+   PHONE:
+   One viewport
+   Eyes + countdown + hands
+   NO SCROLL
+
+   DESKTOP:
+   Screen 1 = eyes + countdown
+   Scroll
+   Screen 2 = hands
+
+   ========================================================== */
+
+
+/* ==========================================================
+   RESET
    ========================================================== */
 
 * {
@@ -10,604 +24,541 @@
     box-sizing: border-box;
 }
 
+
 html {
     background: #000;
-    scroll-behavior: smooth;
 }
+
 
 body {
     width: 100%;
     margin: 0;
+
     background: #000;
     color: #fff;
+
     font-family: "Montserrat", sans-serif;
+
     overflow-x: hidden;
 }
 
 
 /* ==========================================================
-   COMMON
+   COMMON LANDING
    ========================================================== */
 
 .landing {
     position: relative;
+
     width: 100%;
-    overflow: hidden;
+
     background: #000;
+
+    overflow: hidden;
 }
 
-.photo-layer {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    background-repeat: no-repeat;
-    pointer-events: none;
-}
-
-.middle-darkness,
-.cinematic-grade,
-.vignette,
-.red-glow {
-    position: absolute;
-    pointer-events: none;
-}
 
 .content {
     position: relative;
-    z-index: 10;
+
+    z-index: 20;
+
     display: flex;
+
     flex-direction: column;
+
     align-items: center;
+
     text-align: center;
 }
 
 
+
 /* ==========================================================
-   DESKTOP
+   SHARED TITLE
    ========================================================== */
 
-@media (min-width: 651px) {
+.title {
+    width: 100%;
+}
 
-    .landing {
-        height: 100vh;
-        min-height: 600px;
-    }
 
+.title h1 {
 
-    /* EYES ONLY */
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
 
-    .photo-eyes {
-        z-index: 1;
-        inset: 0;
-        height: 100%;
+    font-weight: 500;
 
-        background-image: url("photo1.jpg");
-        background-size: cover;
-        background-position: center center;
+    color: #f8f4f1;
 
-        filter:
-            brightness(.58)
-            contrast(1.12)
-            saturate(.75);
+    text-shadow:
+        0 3px 15px #000,
+        0 0 35px #000;
+}
 
-        animation: desktopZoom 20s ease-in-out infinite alternate;
-    }
 
+.title h2 {
 
-    /* REMOVE HANDS COMPLETELY */
+    font-weight: 400;
 
-    .photo-hands {
-        display: none;
-    }
+    color: #ff555a;
 
+    text-shadow:
+        0 0 7px #ff3035,
+        0 0 20px rgba(255, 0, 0, .75);
+}
 
-    @keyframes desktopZoom {
 
-        from {
-            transform: scale(1.01);
-        }
 
-        to {
-            transform: scale(1.055);
-        }
-    }
+/* ==========================================================
+   HEART DIVIDER
+   ========================================================== */
 
+.heart-divider {
 
-    /* CINEMATIC DARKENING */
+    display: flex;
 
-    .middle-darkness {
-        z-index: 2;
-        inset: 0;
+    align-items: center;
 
-        background:
-            linear-gradient(
-                to bottom,
-                rgba(0,0,0,.10),
-                rgba(0,0,0,.25) 45%,
-                rgba(0,0,0,.60)
-            );
-    }
+}
 
 
-    .cinematic-grade {
-        z-index: 3;
-        inset: 0;
+.heart-divider span {
 
-        background:
-            radial-gradient(
-                ellipse at center,
-                transparent 0%,
-                rgba(25,0,0,.12) 48%,
-                rgba(0,0,0,.60) 100%
-            );
-    }
+    flex: 1;
 
+    height: 1px;
 
-    .red-glow {
-        z-index: 4;
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #ff4147
+        );
+}
 
-        left: 50%;
-        top: 50%;
 
-        width: 900px;
-        height: 600px;
+.heart-divider span:last-child {
 
-        transform: translate(-50%, -50%);
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            #ff4147
+        );
+}
 
-        background:
-            radial-gradient(
-                ellipse,
-                rgba(255,20,25,.13),
-                transparent 68%
-            );
 
-        filter: blur(40px);
-    }
+.heart {
 
+    color: #ff555a;
 
-    .vignette {
-        z-index: 5;
-        inset: 0;
+    text-shadow:
+        0 0 9px #ff2028;
 
-        box-shadow:
-            inset 0 0 180px 60px rgba(0,0,0,.9);
-    }
+    animation:
+        heartbeat
+        1.5s
+        infinite;
+}
 
 
-    /* CENTER EVERYTHING */
 
-    .content {
-        height: 100vh;
+/* ==========================================================
+   TIMER
+   ========================================================== */
 
-        justify-content: center;
+.number {
 
-        padding: 0 30px;
+    font-family:
+        "Bebas Neue",
+        Impact,
+        sans-serif;
 
-        transform: translateY(-10px);
-    }
+    color: #ff6265;
 
+    text-shadow:
+        0 0 4px #ff5a5a,
+        0 0 17px rgba(255, 0, 0, .7);
+}
 
-    /* TITLE */
 
-    .title h1 {
-        font-family: "Cormorant Garamond", Georgia, serif;
+.colon {
 
-        font-size: clamp(4rem, 7vw, 7.2rem);
+    font-family:
+        "Bebas Neue",
+        Impact,
+        sans-serif;
 
-        font-weight: 500;
+    color: #ff555a;
+}
 
-        line-height: .88;
 
-        letter-spacing: .15em;
+.label {
 
-        padding-left: .15em;
+    color: #fff;
 
-        color: #f8f4f1;
+    white-space: nowrap;
+}
 
-        text-shadow:
-            0 4px 20px #000,
-            0 0 40px #000;
-    }
 
 
-    .title h2 {
-        margin-top: 20px;
+/* ==========================================================
+   ECG
+   ========================================================== */
 
-        font-size: clamp(1.25rem, 2.4vw, 2.4rem);
+.ecg-divider {
 
-        font-weight: 400;
+    display: flex;
 
-        letter-spacing: .65em;
+    align-items: center;
+}
 
-        padding-left: .65em;
 
-        color: #ff555a;
+.ecg-divider span {
 
-        text-shadow:
-            0 0 7px #ff3035,
-            0 0 25px rgba(255,0,0,.7);
-    }
+    flex: 1;
 
+    height: 1px;
 
-    /* HEART LINE */
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            #ff4147
+        );
+}
 
-    .heart-divider {
-        width: min(630px, 65vw);
 
-        display: flex;
-        align-items: center;
+.ecg-divider span:last-child {
 
-        gap: 18px;
+    background:
+        linear-gradient(
+            to left,
+            transparent,
+            #ff4147
+        );
+}
 
-        margin: 27px 0 35px;
-    }
 
+.ecg polyline {
 
-    .heart-divider span {
-        flex: 1;
-        height: 1px;
+    fill: none;
 
-        background:
-            linear-gradient(
-                to right,
-                transparent,
-                #ff4147
-            );
-    }
+    stroke: #ff454b;
 
+    stroke-width: 2;
+}
 
-    .heart-divider span:last-child {
-        background:
-            linear-gradient(
-                to left,
-                transparent,
-                #ff4147
-            );
-    }
 
 
-    .heart {
-        color: #ff555a;
-        font-size: 2rem;
+/* ==========================================================
+   MESSAGE
+   ========================================================== */
 
-        text-shadow:
-            0 0 10px #ff2028;
+.always {
 
-        animation: heartbeat 1.5s infinite;
-    }
+    font-family:
+        "Allura",
+        cursive;
 
+    color: #ff4d52;
 
-    /* COUNTDOWN */
+    text-shadow:
+        0 0 8px rgba(255, 20, 20, .8);
+}
 
-    .countdown {
-        width: min(1050px, 92vw);
 
-        display: flex;
+.small-heart {
 
-        justify-content: center;
-        align-items: flex-start;
+    display: inline-block;
 
-        gap: clamp(6px, 1.3vw, 22px);
-    }
-
-
-    .time-box {
-        width: clamp(80px, 10vw, 145px);
-    }
-
-
-    .number {
-        font-family: "Bebas Neue", Impact, sans-serif;
-
-        font-size: clamp(4rem, 7vw, 7.2rem);
-
-        line-height: .9;
-
-        color: #ff6265;
-
-        text-shadow:
-            0 0 5px #ff5a5a,
-            0 0 20px rgba(255,0,0,.65);
-    }
-
-
-    .colon {
-        font-family: "Bebas Neue", Impact, sans-serif;
-
-        font-size: clamp(3.5rem, 6vw, 6rem);
-
-        line-height: .9;
-
-        color: #ff555a;
-    }
-
-
-    .label {
-        margin-top: 14px;
-
-        font-size: clamp(.55rem, .75vw, .75rem);
-
-        letter-spacing: .22em;
-
-        color: #fff;
-    }
-
-
-    /* DATE */
-
-    .date {
-        margin-top: 38px;
-
-        font-size: clamp(.75rem, 1.15vw, 1.05rem);
-
-        letter-spacing: .55em;
-
-        padding-left: .55em;
-    }
-
-
-    /* ECG */
-
-    .ecg-divider {
-        width: min(500px, 55vw);
-
-        display: flex;
-        align-items: center;
-
-        margin: 18px 0 15px;
-    }
-
-
-    .ecg-divider span {
-        flex: 1;
-        height: 1px;
-
-        background:
-            linear-gradient(
-                to right,
-                transparent,
-                #ff4147
-            );
-    }
-
-
-    .ecg-divider span:last-child {
-        background:
-            linear-gradient(
-                to left,
-                transparent,
-                #ff4147
-            );
-    }
-
-
-    .ecg {
-        width: 60px;
-        height: 30px;
-    }
-
-
-    .ecg polyline {
-        fill: none;
-        stroke: #ff454b;
-        stroke-width: 2;
-    }
-
-
-    .forever {
-        font-size: clamp(.58rem, .8vw, .82rem);
-
-        letter-spacing: .38em;
-
-        padding-left: .38em;
-    }
-
-
-    .always {
-        margin-top: 12px;
-
-        font-family: "Allura", cursive;
-
-        font-size: clamp(2rem, 3vw, 3rem);
-
-        color: #ff4d52;
-
-        text-shadow:
-            0 0 8px rgba(255,20,20,.8);
-    }
-
-
-    .small-heart {
-        display: inline-block;
-        animation: heartbeat 1.5s infinite;
-    }
-
-
-    /* No scroll prompt on desktop */
-
-    .scroll-indicator {
-        display: none;
-    }
+    animation:
+        heartbeat
+        1.5s
+        infinite;
 }
 
 
 
 /* ==========================================================
    PHONE
-   Full two-photo cinematic poster
    ========================================================== */
 
 @media (max-width: 650px) {
 
+
+    /* ------------------------------------------------------
+       IMPORTANT
+
+       Entire experience = ONE visible phone viewport.
+       ------------------------------------------------------ */
+
+    html,
+    body {
+
+        width: 100%;
+
+        height: 100%;
+
+        overflow: hidden;
+    }
+
+
     .landing {
-        height: 1450px;
-        min-height: 1450px;
+
+        width: 100%;
+
+        height: 100vh;
+
+        height: 100svh;
+
+        height: 100dvh;
+
+        min-height: 0;
+
+        overflow: hidden;
     }
 
 
-    /* ======================================================
-       EYES — TOP
-       ====================================================== */
-
-    .photo-eyes {
-        z-index: 1;
-
-        top: 0;
-
-        height: 600px;
-
-        background-image: url("photo1.jpg");
-
-        background-size: cover;
-
-        background-position: center 35%;
-
-        filter:
-            brightness(.82)
-            contrast(1.12)
-            saturate(.82);
-
-        -webkit-mask-image:
-            linear-gradient(
-                to bottom,
-
-                #000 0%,
-                #000 56%,
-
-                rgba(0,0,0,.95) 68%,
-
-                rgba(0,0,0,.50) 84%,
-
-                transparent 100%
-            );
-
-        mask-image:
-            linear-gradient(
-                to bottom,
-
-                #000 0%,
-                #000 56%,
-
-                rgba(0,0,0,.95) 68%,
-
-                rgba(0,0,0,.50) 84%,
-
-                transparent 100%
-            );
-    }
-
 
     /* ======================================================
-       HANDS — BOTTOM
+       PHOTOS
        ====================================================== */
 
-    .photo-hands {
-        z-index: 1;
+    .phone-photo {
 
-        bottom: 0;
-
-        height: 930px;
-
-        background-image: url("photo2.jpg");
-
-        background-size: cover;
-
-        background-position: center center;
-
-        filter:
-            brightness(.83)
-            contrast(1.08)
-            saturate(.82);
-
-        -webkit-mask-image:
-            linear-gradient(
-                to bottom,
-
-                transparent 0%,
-
-                rgba(0,0,0,.15) 8%,
-
-                rgba(0,0,0,.65) 25%,
-
-                #000 42%,
-
-                #000 100%
-            );
-
-        mask-image:
-            linear-gradient(
-                to bottom,
-
-                transparent 0%,
-
-                rgba(0,0,0,.15) 8%,
-
-                rgba(0,0,0,.65) 25%,
-
-                #000 42%,
-
-                #000 100%
-            );
-    }
-
-
-    /* ======================================================
-       PHOTO BLENDING
-       ====================================================== */
-
-    .middle-darkness {
-        z-index: 2;
-
-        top: 350px;
+        position: absolute;
 
         left: 0;
 
         width: 100%;
 
-        height: 720px;
+        background-repeat: no-repeat;
 
-        background:
+        pointer-events: none;
+    }
+
+
+
+    /* ------------------------------------------------------
+       EYES
+
+       Occupies upper portion.
+       ------------------------------------------------------ */
+
+    .phone-eyes {
+
+        z-index: 1;
+
+        top: 0;
+
+        height: 53%;
+
+        background-image:
+            url("photo1.jpg");
+
+        background-size: cover;
+
+        /*
+           This controls the eyes crop.
+        */
+
+        background-position:
+            center 36%;
+
+        filter:
+            brightness(.78)
+            contrast(1.13)
+            saturate(.82);
+
+
+        -webkit-mask-image:
             linear-gradient(
                 to bottom,
 
-                transparent 0%,
+                #000 0%,
 
-                rgba(0,0,0,.15) 10%,
+                #000 55%,
 
-                rgba(0,0,0,.50) 27%,
+                rgba(0,0,0,.95) 67%,
 
-                rgba(0,0,0,.74) 48%,
+                rgba(0,0,0,.55) 83%,
 
-                rgba(0,0,0,.64) 66%,
+                transparent 100%
+            );
 
-                rgba(0,0,0,.20) 86%,
+
+        mask-image:
+            linear-gradient(
+                to bottom,
+
+                #000 0%,
+
+                #000 55%,
+
+                rgba(0,0,0,.95) 67%,
+
+                rgba(0,0,0,.55) 83%,
 
                 transparent 100%
             );
     }
 
 
+
+    /* ------------------------------------------------------
+       HANDS
+
+       Starts around middle and fills bottom.
+       ------------------------------------------------------ */
+
+    .phone-hands {
+
+        z-index: 1;
+
+        bottom: 0;
+
+        height: 57%;
+
+        background-image:
+            url("photo2.jpg");
+
+        background-size: cover;
+
+        background-position:
+            center 48%;
+
+        filter:
+            brightness(.82)
+            contrast(1.08)
+            saturate(.82);
+
+
+        -webkit-mask-image:
+            linear-gradient(
+                to bottom,
+
+                transparent 0%,
+
+                rgba(0,0,0,.18) 12%,
+
+                rgba(0,0,0,.65) 28%,
+
+                #000 48%,
+
+                #000 100%
+            );
+
+
+        mask-image:
+            linear-gradient(
+                to bottom,
+
+                transparent 0%,
+
+                rgba(0,0,0,.18) 12%,
+
+                rgba(0,0,0,.65) 28%,
+
+                #000 48%,
+
+                #000 100%
+            );
+    }
+
+
+
+    /* ======================================================
+       CENTRAL BLEND
+
+       This is what makes them look like one poster.
+       ====================================================== */
+
+    .phone-blend {
+
+        position: absolute;
+
+        z-index: 2;
+
+        top: 28%;
+
+        left: 0;
+
+        width: 100%;
+
+        height: 50%;
+
+        pointer-events: none;
+
+
+        background:
+
+            radial-gradient(
+                ellipse at center,
+
+                rgba(90, 0, 0, .10),
+
+                rgba(0,0,0,.45) 45%,
+
+                transparent 76%
+            ),
+
+            linear-gradient(
+                to bottom,
+
+                transparent 0%,
+
+                rgba(0,0,0,.20) 12%,
+
+                rgba(0,0,0,.62) 38%,
+
+                rgba(0,0,0,.72) 52%,
+
+                rgba(0,0,0,.48) 72%,
+
+                transparent 100%
+            );
+    }
+
+
+
+    /* ======================================================
+       CINEMATIC OVERLAYS
+       ====================================================== */
+
     .cinematic-grade {
+
+        position: absolute;
+
         z-index: 3;
 
         inset: 0;
+
+        pointer-events: none;
+
 
         background:
 
             linear-gradient(
                 to bottom,
 
-                rgba(20,0,0,.08),
+                rgba(20,0,0,.05),
 
-                transparent 25%,
+                transparent 18%,
 
-                rgba(0,0,0,.12) 60%,
+                rgba(0,0,0,.08) 45%,
 
-                rgba(0,0,0,.32)
+                rgba(0,0,0,.16) 75%,
+
+                rgba(0,0,0,.30)
             ),
 
             radial-gradient(
-                ellipse at 50% 32%,
+                ellipse at 50% 38%,
 
                 transparent 0%,
 
@@ -619,181 +570,176 @@ body {
 
 
     .red-glow {
+
+        position: absolute;
+
         z-index: 4;
 
-        top: 280px;
+        left: 50%;
 
-        left: 0;
+        top: 45%;
 
-        width: 100%;
+        width: 120%;
 
-        height: 650px;
+        height: 55%;
+
+        transform:
+            translate(-50%, -50%);
 
         background:
             radial-gradient(
                 ellipse,
 
-                rgba(255,25,30,.12),
+                rgba(255, 20, 30, .13),
 
-                transparent 70%
+                transparent 68%
             );
 
-        filter: blur(35px);
+        filter:
+            blur(25px);
+
+        pointer-events: none;
     }
 
 
     .vignette {
+
+        position: absolute;
+
         z-index: 5;
 
         inset: 0;
 
+        pointer-events: none;
+
         box-shadow:
-            inset 0 0 85px 18px rgba(0,0,0,.82);
+            inset 0 0 70px 14px
+            rgba(0,0,0,.78);
     }
+
+
+
+    /* DESKTOP ELEMENTS DON'T EXIST VISUALLY */
+
+    .desktop-eyes,
+    .desktop-hands-section {
+
+        display: none;
+    }
+
 
 
     /* ======================================================
        CONTENT
+
+       Positioned over the middle of both photos.
        ====================================================== */
 
     .content {
+
         width: 100%;
 
+        height: 100%;
+
+        justify-content: flex-start;
+
         padding:
-            285px
+
+            max(
+                21vh,
+                env(safe-area-inset-top)
+            )
+
             10px
-            0;
+
+            max(
+                2vh,
+                env(safe-area-inset-bottom)
+            );
     }
+
 
 
     /* ======================================================
        TITLE
        ====================================================== */
 
-    .title {
-        width: 100%;
-    }
-
-
     .title h1 {
-        font-family:
-            "Cormorant Garamond",
-            Georgia,
-            serif;
 
-        font-size: clamp(
-            2.2rem,
-            10.5vw,
-            3.25rem
-        );
+        font-size:
+            clamp(
+                2rem,
+                10.5vw,
+                3.2rem
+            );
 
-        font-weight: 500;
+        line-height: .95;
 
-        line-height: 1;
+        letter-spacing: .055em;
 
-        letter-spacing: .065em;
-
-        padding-left: .065em;
+        padding-left: .055em;
 
         white-space: nowrap;
-
-        color: #f7f3f0;
-
-        text-shadow:
-            0 3px 15px #000,
-            0 0 30px #000;
     }
 
 
     .title h2 {
-        margin-top: 14px;
 
-        font-size: clamp(
-            .95rem,
-            4.8vw,
-            1.35rem
-        );
+        margin-top: 1.2vh;
 
-        font-weight: 400;
+        font-size:
+            clamp(
+                .88rem,
+                4.6vw,
+                1.3rem
+            );
 
-        letter-spacing: .38em;
+        line-height: 1;
 
-        padding-left: .38em;
+        letter-spacing: .36em;
+
+        padding-left: .36em;
 
         white-space: nowrap;
-
-        color: #ff575c;
-
-        text-shadow:
-            0 0 7px #ff3338,
-            0 0 18px rgba(255,0,0,.75);
     }
+
 
 
     /* ======================================================
-       HEART DIVIDER
+       HEART
        ====================================================== */
 
     .heart-divider {
-        width: 78%;
 
-        display: flex;
+        width: 76%;
 
-        align-items: center;
-
-        gap: 12px;
+        gap: 10px;
 
         margin:
-            25px
+            2.2vh
             auto
-            48px;
-    }
-
-
-    .heart-divider span {
-        flex: 1;
-
-        height: 1px;
-
-        background:
-            linear-gradient(
-                to right,
-                transparent,
-                #ff4147
-            );
-    }
-
-
-    .heart-divider span:last-child {
-        background:
-            linear-gradient(
-                to left,
-                transparent,
-                #ff4147
-            );
+            3vh;
     }
 
 
     .heart {
-        color: #ff555a;
 
-        font-size: 1.75rem;
-
-        text-shadow:
-            0 0 8px #ff2028;
-
-        animation:
-            heartbeat
-            1.5s
-            infinite;
+        font-size:
+            clamp(
+                1.25rem,
+                5vw,
+                1.7rem
+            );
     }
 
 
+
     /* ======================================================
-       TIMER
+       COUNTDOWN
        ====================================================== */
 
     .countdown {
+
         width: 100%;
 
         display: grid;
@@ -816,71 +762,53 @@ body {
 
 
     .time-box {
-        width: auto;
 
         min-width: 0;
     }
 
 
     .number {
-        font-family:
-            "Bebas Neue",
-            Impact,
-            sans-serif;
 
-        font-size: clamp(
-            2.55rem,
-            11.5vw,
-            3.55rem
-        );
+        font-size:
+            clamp(
+                2.25rem,
+                11vw,
+                3.35rem
+            );
 
-        line-height: .9;
-
-        letter-spacing: 0;
+        line-height: .86;
 
         white-space: nowrap;
-
-        color: #ff6265;
-
-        text-shadow:
-            0 0 4px #ff5a5a,
-            0 0 15px rgba(255,0,0,.7);
     }
 
 
     .colon {
-        font-family:
-            "Bebas Neue",
-            Impact,
-            sans-serif;
 
-        font-size: clamp(
-            1.8rem,
-            7.5vw,
-            2.5rem
-        );
+        font-size:
+            clamp(
+                1.7rem,
+                7vw,
+                2.4rem
+            );
 
-        line-height: .9;
-
-        color: #ff555a;
+        line-height: .86;
     }
 
 
     .label {
-        margin-top: 13px;
 
-        font-size: clamp(
-            .3rem,
-            1.4vw,
-            .41rem
-        );
+        margin-top: 1vh;
 
-        letter-spacing: .02em;
+        font-size:
+            clamp(
+                .28rem,
+                1.3vw,
+                .40rem
+            );
 
-        white-space: nowrap;
-
-        color: #fff;
+        letter-spacing: 0;
     }
+
 
 
     /* ======================================================
@@ -888,20 +816,23 @@ body {
        ====================================================== */
 
     .date {
-        margin-top: 60px;
 
-        font-size: clamp(
-            .62rem,
-            2.7vw,
-            .75rem
-        );
+        margin-top: 4.2vh;
 
-        letter-spacing: .27em;
+        font-size:
+            clamp(
+                .58rem,
+                2.5vw,
+                .72rem
+            );
 
-        padding-left: .27em;
+        letter-spacing: .25em;
+
+        padding-left: .25em;
 
         white-space: nowrap;
     }
+
 
 
     /* ======================================================
@@ -909,57 +840,549 @@ body {
        ====================================================== */
 
     .ecg-divider {
-        width: 70%;
 
-        display: flex;
-
-        align-items: center;
+        width: 68%;
 
         margin:
-            28px
+            2.2vh
             auto
-            28px;
-    }
-
-
-    .ecg-divider span {
-        flex: 1;
-
-        height: 1px;
-
-        background:
-            linear-gradient(
-                to right,
-                transparent,
-                #ff4147
-            );
-    }
-
-
-    .ecg-divider span:last-child {
-        background:
-            linear-gradient(
-                to left,
-                transparent,
-                #ff4147
-            );
+            1.8vh;
     }
 
 
     .ecg {
-        width: 52px;
+
+        width:
+            clamp(
+                42px,
+                12vw,
+                54px
+            );
+
+        height:
+            clamp(
+                20px,
+                5vw,
+                28px
+            );
+    }
+
+
+
+    /* ======================================================
+       MESSAGE
+       ====================================================== */
+
+    .forever {
+
+        font-size:
+            clamp(
+                .40rem,
+                1.65vw,
+                .53rem
+            );
+
+        letter-spacing: .14em;
+
+        padding-left: .14em;
+
+        white-space: nowrap;
+    }
+
+
+    .always {
+
+        margin-top: 1.5vh;
+
+        font-size:
+            clamp(
+                1.65rem,
+                7.5vw,
+                2.3rem
+            );
+
+        white-space: nowrap;
+    }
+
+}
+
+
+
+/* ==========================================================
+   SHORT PHONE SCREENS
+
+   Example:
+   landscape-ish browser viewport,
+   older phones,
+   large browser bars.
+   ========================================================== */
+
+@media
+(max-width: 650px)
+and
+(max-height: 700px) {
+
+
+    .content {
+
+        padding-top: 16vh;
+    }
+
+
+    .title h1 {
+
+        font-size:
+            clamp(
+                1.8rem,
+                9.5vw,
+                2.8rem
+            );
+    }
+
+
+    .title h2 {
+
+        margin-top: .8vh;
+    }
+
+
+    .heart-divider {
+
+        margin:
+            1.5vh
+            auto
+            2vh;
+    }
+
+
+    .number {
+
+        font-size:
+            clamp(
+                2rem,
+                10vw,
+                3rem
+            );
+    }
+
+
+    .label {
+
+        margin-top: .7vh;
+    }
+
+
+    .date {
+
+        margin-top: 2.5vh;
+    }
+
+
+    .ecg-divider {
+
+        margin:
+            1.3vh
+            auto
+            1vh;
+    }
+
+
+    .always {
+
+        margin-top: .8vh;
+    }
+
+}
+
+
+
+/* ==========================================================
+   DESKTOP / LAPTOP
+   ========================================================== */
+
+@media (min-width: 651px) {
+
+
+    html {
+
+        scroll-behavior: smooth;
+    }
+
+
+    body {
+
+        overflow-y: auto;
+    }
+
+
+
+    /* ======================================================
+       SCREEN 1
+       ====================================================== */
+
+    .landing {
+
+        height: 100vh;
+
+        min-height: 620px;
+
+        overflow: hidden;
+    }
+
+
+
+    /* PHONE PHOTOS OFF */
+
+    .phone-photo,
+    .phone-blend {
+
+        display: none;
+    }
+
+
+
+    /* ======================================================
+       EYES
+       ====================================================== */
+
+    .desktop-eyes {
+
+        position: absolute;
+
+        z-index: 1;
+
+        inset: 0;
+
+        background-image:
+            url("photo1.jpg");
+
+        background-size: cover;
+
+        background-position:
+            center center;
+
+        filter:
+            brightness(.58)
+            contrast(1.12)
+            saturate(.75);
+
+        animation:
+            desktopZoom
+            20s
+            ease-in-out
+            infinite
+            alternate;
+    }
+
+
+
+    /* ======================================================
+       CINEMATIC EFFECT
+       ====================================================== */
+
+    .cinematic-grade {
+
+        position: absolute;
+
+        z-index: 3;
+
+        inset: 0;
+
+
+        background:
+
+            linear-gradient(
+                to bottom,
+
+                rgba(0,0,0,.10),
+
+                rgba(0,0,0,.24) 45%,
+
+                rgba(0,0,0,.62)
+            ),
+
+            radial-gradient(
+                ellipse at center,
+
+                transparent 0%,
+
+                rgba(25,0,0,.12) 48%,
+
+                rgba(0,0,0,.58) 100%
+            );
+
+        pointer-events: none;
+    }
+
+
+    .red-glow {
+
+        position: absolute;
+
+        z-index: 4;
+
+        left: 50%;
+
+        top: 50%;
+
+        width: min(900px, 80vw);
+
+        height: 600px;
+
+        transform:
+            translate(-50%, -50%);
+
+
+        background:
+            radial-gradient(
+                ellipse,
+
+                rgba(255,20,25,.13),
+
+                transparent 68%
+            );
+
+        filter:
+            blur(40px);
+
+        pointer-events: none;
+    }
+
+
+    .vignette {
+
+        position: absolute;
+
+        z-index: 5;
+
+        inset: 0;
+
+        box-shadow:
+            inset 0 0 180px 60px
+            rgba(0,0,0,.90);
+
+        pointer-events: none;
+    }
+
+
+
+    /* ======================================================
+       CONTENT
+       ====================================================== */
+
+    .content {
+
+        width: 100%;
+
+        height: 100vh;
+
+        justify-content: center;
+
+        padding:
+            20px
+            30px;
+
+        transform:
+            translateY(-8px);
+    }
+
+
+
+    /* ======================================================
+       TITLE
+       ====================================================== */
+
+    .title h1 {
+
+        font-size:
+            clamp(
+                4rem,
+                7vw,
+                7.2rem
+            );
+
+        line-height: .88;
+
+        letter-spacing: .15em;
+
+        padding-left: .15em;
+    }
+
+
+    .title h2 {
+
+        margin-top: 20px;
+
+        font-size:
+            clamp(
+                1.25rem,
+                2.4vw,
+                2.4rem
+            );
+
+        letter-spacing: .65em;
+
+        padding-left: .65em;
+    }
+
+
+
+    /* ======================================================
+       HEART
+       ====================================================== */
+
+    .heart-divider {
+
+        width:
+            min(
+                630px,
+                65vw
+            );
+
+        gap: 18px;
+
+        margin:
+            27px
+            0
+            35px;
+    }
+
+
+    .heart {
+
+        font-size: 2rem;
+    }
+
+
+
+    /* ======================================================
+       COUNTDOWN
+       ====================================================== */
+
+    .countdown {
+
+        width:
+            min(
+                1050px,
+                92vw
+            );
+
+        display: flex;
+
+        justify-content: center;
+
+        align-items: flex-start;
+
+        gap:
+            clamp(
+                6px,
+                1.3vw,
+                22px
+            );
+    }
+
+
+    .time-box {
+
+        width:
+            clamp(
+                80px,
+                10vw,
+                145px
+            );
+    }
+
+
+    .number {
+
+        font-size:
+            clamp(
+                4rem,
+                7vw,
+                7.2rem
+            );
+
+        line-height: .9;
+    }
+
+
+    .colon {
+
+        font-size:
+            clamp(
+                3.5rem,
+                6vw,
+                6rem
+            );
+
+        line-height: .9;
+    }
+
+
+    .label {
+
+        margin-top: 14px;
+
+        font-size:
+            clamp(
+                .55rem,
+                .75vw,
+                .75rem
+            );
+
+        letter-spacing: .22em;
+    }
+
+
+
+    /* ======================================================
+       DATE
+       ====================================================== */
+
+    .date {
+
+        margin-top: 38px;
+
+        font-size:
+            clamp(
+                .75rem,
+                1.15vw,
+                1.05rem
+            );
+
+        letter-spacing: .55em;
+
+        padding-left: .55em;
+    }
+
+
+
+    /* ======================================================
+       ECG
+       ====================================================== */
+
+    .ecg-divider {
+
+        width:
+            min(
+                500px,
+                55vw
+            );
+
+        margin:
+            18px
+            0
+            15px;
+    }
+
+
+    .ecg {
+
+        width: 60px;
 
         height: 30px;
     }
 
-
-    .ecg polyline {
-        fill: none;
-
-        stroke: #ff454b;
-
-        stroke-width: 2;
-    }
 
 
     /* ======================================================
@@ -967,44 +1390,221 @@ body {
        ====================================================== */
 
     .forever {
-        font-size: clamp(
-            .45rem,
-            1.9vw,
-            .55rem
-        );
 
-        letter-spacing: .16em;
+        font-size:
+            clamp(
+                .58rem,
+                .8vw,
+                .82rem
+            );
 
-        padding-left: .16em;
+        letter-spacing: .38em;
+
+        padding-left: .38em;
+    }
+
+
+    .always {
+
+        margin-top: 12px;
+
+        font-size:
+            clamp(
+                2rem,
+                3vw,
+                3rem
+            );
+    }
+
+
+
+    /* ======================================================
+       SCREEN 2 — HANDS
+       ====================================================== */
+
+    .desktop-hands-section {
+
+        position: relative;
+
+        display: block;
+
+        width: 100%;
+
+        height: 100vh;
+
+        min-height: 620px;
+
+        overflow: hidden;
+
+        background: #000;
+    }
+
+
+    .desktop-hands-photo {
+
+        position: absolute;
+
+        z-index: 1;
+
+        inset: 0;
+
+
+        background-image:
+            url("photo2.jpg");
+
+        background-size: cover;
+
+        background-position:
+            center center;
+
+
+        filter:
+            brightness(.72)
+            contrast(1.08)
+            saturate(.82);
+
+        animation:
+            handsZoom
+            22s
+            ease-in-out
+            infinite
+            alternate;
+    }
+
+
+
+    /* TOP DARK TRANSITION */
+
+    .desktop-hands-section::before {
+
+        content: "";
+
+        position: absolute;
+
+        z-index: 2;
+
+        top: 0;
+
+        left: 0;
+
+        width: 100%;
+
+        height: 30%;
+
+
+        background:
+            linear-gradient(
+                to bottom,
+
+                rgba(0,0,0,.75),
+
+                transparent
+            );
+
+        pointer-events: none;
+    }
+
+
+
+    .hands-grade {
+
+        position: absolute;
+
+        z-index: 3;
+
+        inset: 0;
+
+
+        background:
+
+            linear-gradient(
+                to bottom,
+
+                rgba(20,0,0,.10),
+
+                transparent 40%,
+
+                rgba(0,0,0,.35)
+            ),
+
+            radial-gradient(
+                ellipse at center,
+
+                transparent 25%,
+
+                rgba(0,0,0,.52) 100%
+            );
+
+        pointer-events: none;
+    }
+
+
+
+    .hands-vignette {
+
+        position: absolute;
+
+        z-index: 4;
+
+        inset: 0;
+
+        box-shadow:
+            inset 0 0 180px 60px
+            rgba(0,0,0,.85);
+
+        pointer-events: none;
+    }
+
+
+
+    .hands-message {
+
+        position: absolute;
+
+        z-index: 10;
+
+        left: 50%;
+
+        bottom: 8vh;
+
+        transform:
+            translateX(-50%);
+
+        text-align: center;
 
         white-space: nowrap;
     }
 
 
-    .always {
-        margin-top: 18px;
+    .hands-message p {
 
         font-family:
             "Allura",
             cursive;
 
-        font-size: clamp(
-            1.9rem,
-            8vw,
-            2.4rem
-        );
+        font-size:
+            clamp(
+                2.5rem,
+                4vw,
+                4.5rem
+            );
 
-        color: #ff4d52;
-
-        white-space: nowrap;
+        color: #ff555a;
 
         text-shadow:
-            0 0 8px rgba(255,20,20,.8);
+            0 0 15px rgba(255,0,0,.8);
     }
 
 
-    .small-heart {
-        display: inline-block;
+    .hands-message span {
+
+        display: block;
+
+        margin-top: 5px;
+
+        font-size: 2rem;
+
+        color: #ff555a;
 
         animation:
             heartbeat
@@ -1012,119 +1612,8 @@ body {
             infinite;
     }
 
-
-    /* ======================================================
-       SCROLL
-       ====================================================== */
-
-    .scroll-indicator {
-        position: absolute;
-
-        z-index: 10;
-
-        left: 50%;
-
-        bottom: 28px;
-
-        transform: translateX(-50%);
-
-        display: flex;
-
-        flex-direction: column;
-
-        align-items: center;
-    }
-
-
-    .mouse {
-        position: relative;
-
-        width: 24px;
-
-        height: 40px;
-
-        border:
-            1px solid
-            rgba(255,255,255,.95);
-
-        border-radius: 20px;
-    }
-
-
-    .wheel {
-        position: absolute;
-
-        top: 6px;
-
-        left: 50%;
-
-        width: 2px;
-
-        height: 7px;
-
-        transform: translateX(-50%);
-
-        background: #ff4449;
-
-        border-radius: 5px;
-
-        animation:
-            wheelMove
-            1.6s
-            infinite;
-    }
-
-
-    .arrow {
-        margin-top: 4px;
-
-        font-size: 1.1rem;
-
-        animation:
-            arrowMove
-            1.3s
-            infinite;
-    }
-
-
-    .scroll-indicator p {
-        margin-top: 7px;
-
-        font-size: .42rem;
-
-        letter-spacing: .42em;
-
-        padding-left: .42em;
-
-        white-space: nowrap;
-    }
 }
 
-
-/* ==========================================================
-   VERY SMALL PHONE
-   ========================================================== */
-
-@media (max-width: 380px) {
-
-    .title h1 {
-        font-size: 2.05rem;
-        letter-spacing: .05em;
-        padding-left: .05em;
-    }
-
-    .title h2 {
-        font-size: .88rem;
-    }
-
-    .number {
-        font-size: 2.35rem;
-    }
-
-    .colon {
-        font-size: 1.7rem;
-    }
-}
 
 
 /* ==========================================================
@@ -1135,67 +1624,90 @@ body {
 
     0%,
     100% {
-        transform: scale(1);
+
+        transform:
+            scale(1);
     }
+
 
     15% {
-        transform: scale(1.2);
+
+        transform:
+            scale(1.20);
     }
+
 
     30% {
-        transform: scale(1);
+
+        transform:
+            scale(1);
     }
+
 
     45% {
-        transform: scale(1.12);
+
+        transform:
+            scale(1.12);
     }
+
 
     60% {
-        transform: scale(1);
+
+        transform:
+            scale(1);
     }
 }
 
 
-@keyframes wheelMove {
 
-    0% {
-        opacity: 0;
-        transform: translate(-50%, 0);
+@keyframes desktopZoom {
+
+    from {
+
+        transform:
+            scale(1.01);
     }
 
-    25% {
-        opacity: 1;
-    }
 
-    70% {
-        opacity: 1;
-    }
+    to {
 
-    100% {
-        opacity: 0;
-        transform: translate(-50%, 13px);
+        transform:
+            scale(1.055);
     }
 }
 
 
-@keyframes arrowMove {
 
-    0%,
-    100% {
-        transform: translateY(0);
+@keyframes handsZoom {
+
+    from {
+
+        transform:
+            scale(1.01);
     }
 
-    50% {
-        transform: translateY(5px);
+
+    to {
+
+        transform:
+            scale(1.045);
     }
 }
 
+
+
+/* ==========================================================
+   ACCESSIBILITY
+   ========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
     *::after {
+
         animation: none !important;
+
+        scroll-behavior: auto !important;
     }
 }
