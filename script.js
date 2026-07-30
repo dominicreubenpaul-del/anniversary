@@ -5,7 +5,6 @@
    12:00 AM IST
 ========================================================== */
 
-
 const targetDate =
     new Date("2026-11-19T00:00:00+05:30");
 
@@ -46,11 +45,13 @@ function addCalendarMonths(date, months) {
     const result =
         new Date(date.getTime());
 
+
     const originalDay =
         result.getDate();
 
 
     result.setDate(1);
+
 
     result.setMonth(
         result.getMonth() + months
@@ -113,11 +114,13 @@ function calculateCountdown(now) {
 
         months--;
 
+
         afterMonths =
             addCalendarMonths(
                 now,
                 months
             );
+
     }
 
 
@@ -179,6 +182,7 @@ function calculateCountdown(now) {
         minutes,
         seconds
     };
+
 }
 
 
@@ -201,11 +205,12 @@ function showAnniversary() {
 
     document.title =
         "Happy Anniversary ❤️";
+
 }
 
 
 /* ==========================================================
-   UPDATE
+   UPDATE COUNTDOWN
 ========================================================== */
 
 function updateCountdown() {
@@ -219,6 +224,7 @@ function updateCountdown() {
         showAnniversary();
 
         return;
+
     }
 
 
