@@ -1,22 +1,6 @@
 /* ==========================================================
-   ANNIVERSARY
-
-   PHONE:
-   One viewport
-   Eyes + countdown + hands
-   NO SCROLL
-
-   DESKTOP:
-   Screen 1 = eyes + countdown
-   Scroll
-   Screen 2 = hands
-
-   ========================================================== */
-
-
-/* ==========================================================
    RESET
-   ========================================================== */
+========================================================== */
 
 * {
     margin: 0;
@@ -24,33 +8,29 @@
     box-sizing: border-box;
 }
 
-
 html {
+    width: 100%;
     background: #000;
 }
-
 
 body {
     width: 100%;
     margin: 0;
-
     background: #000;
     color: #fff;
-
     font-family: "Montserrat", sans-serif;
-
-    overflow-x: hidden;
 }
 
 
 /* ==========================================================
-   COMMON LANDING
-   ========================================================== */
+   MAIN PAGE
+========================================================== */
 
 .landing {
     position: relative;
 
     width: 100%;
+    min-height: 200vh;
 
     background: #000;
 
@@ -58,10 +38,151 @@ body {
 }
 
 
+/* ==========================================================
+   MOBILE BACKGROUND
+========================================================== */
+
+.mobile-background {
+    display: none;
+}
+
+
+/* ==========================================================
+   DESKTOP BACKGROUND
+========================================================== */
+
+.desktop-background {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+}
+
+
+/* EYES */
+
+.desktop-eyes {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background-image: url("photo1.jpg");
+
+    background-size: cover;
+
+    background-position: center 35%;
+
+    background-repeat: no-repeat;
+}
+
+
+/* HANDS */
+
+.desktop-hands {
+    position: absolute;
+
+    top: 100vh;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    background-image: url("photo2.jpg");
+
+    background-size: cover;
+
+    background-position: center center;
+
+    background-repeat: no-repeat;
+}
+
+
+/* ==========================================================
+   CINEMATIC EFFECTS
+========================================================== */
+
+.cinematic-grade {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 2;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(20, 0, 0, 0.08) 0%,
+            rgba(30, 0, 0, 0.18) 35%,
+            rgba(0, 0, 0, 0.28) 100%
+        );
+}
+
+
+.vignette {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 3;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0, 0, 0, 0.18) 60%,
+            rgba(0, 0, 0, 0.75) 100%
+        );
+}
+
+
+.red-glow {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    z-index: 4;
+
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center 42%,
+            rgba(255, 30, 30, 0.10),
+            transparent 55%
+        );
+}
+
+
+/* ==========================================================
+   CONTENT
+========================================================== */
+
 .content {
     position: relative;
 
-    z-index: 20;
+    z-index: 10;
+
+    width: min(1100px, 92%);
+
+    height: 100vh;
+
+    margin: 0 auto;
 
     display: flex;
 
@@ -69,1370 +190,310 @@ body {
 
     align-items: center;
 
+    justify-content: center;
+
     text-align: center;
 }
 
 
-
 /* ==========================================================
-   SHARED TITLE
-   ========================================================== */
-
-.title {
-    width: 100%;
-}
-
+   TITLE
+========================================================== */
 
 .title h1 {
+    font-family: "Cormorant Garamond", serif;
 
-    font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
+    font-size: clamp(4rem, 7vw, 7.5rem);
 
     font-weight: 500;
 
-    color: #f8f4f1;
+    line-height: 0.85;
+
+    letter-spacing: 0.13em;
+
+    color: #fff;
 
     text-shadow:
-        0 3px 15px #000,
-        0 0 35px #000;
+        0 3px 20px rgba(0, 0, 0, 0.8);
 }
 
 
 .title h2 {
+    margin-top: 22px;
+
+    font-size: clamp(1.6rem, 3vw, 3rem);
 
     font-weight: 400;
 
-    color: #ff555a;
+    letter-spacing: 0.42em;
+
+    color: #ff5057;
 
     text-shadow:
-        0 0 7px #ff3035,
-        0 0 20px rgba(255, 0, 0, .75);
+        0 0 8px rgba(255, 50, 60, 0.9),
+        0 0 22px rgba(255, 20, 30, 0.55);
 }
-
 
 
 /* ==========================================================
    HEART DIVIDER
-   ========================================================== */
+========================================================== */
 
 .heart-divider {
+    width: min(680px, 75%);
+
+    margin: 25px auto 25px;
 
     display: flex;
 
     align-items: center;
 
+    justify-content: center;
+
+    gap: 18px;
 }
 
 
 .heart-divider span {
+    height: 1px;
 
     flex: 1;
 
-    height: 1px;
-
     background:
         linear-gradient(
-            to right,
+            90deg,
             transparent,
-            #ff4147
+            #e7383f
         );
 }
 
 
 .heart-divider span:last-child {
-
     background:
         linear-gradient(
-            to left,
-            transparent,
-            #ff4147
+            90deg,
+            #e7383f,
+            transparent
         );
 }
 
 
 .heart {
+    color: #ff424a;
 
-    color: #ff555a;
+    font-size: 2.5rem;
+
+    line-height: 1;
 
     text-shadow:
-        0 0 9px #ff2028;
-
-    animation:
-        heartbeat
-        1.5s
-        infinite;
+        0 0 8px #ff3038,
+        0 0 16px rgba(255, 20, 30, 0.6);
 }
 
 
-
 /* ==========================================================
-   TIMER
-   ========================================================== */
+   COUNTDOWN
+========================================================== */
+
+.countdown {
+    width: 100%;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    gap: clamp(12px, 2vw, 28px);
+}
+
+
+.time-box {
+    min-width: 120px;
+
+    text-align: center;
+}
+
 
 .number {
+    font-family: "Bebas Neue", sans-serif;
 
-    font-family:
-        "Bebas Neue",
-        Impact,
-        sans-serif;
+    font-size: clamp(5rem, 8vw, 8rem);
 
-    color: #ff6265;
+    line-height: 1;
+
+    color: #ff555b;
 
     text-shadow:
-        0 0 4px #ff5a5a,
-        0 0 17px rgba(255, 0, 0, .7);
+        0 0 6px rgba(255, 50, 55, 1),
+        0 0 16px rgba(255, 35, 40, 0.85),
+        0 0 32px rgba(255, 20, 30, 0.45);
 }
 
 
 .colon {
+    font-family: "Bebas Neue", sans-serif;
 
-    font-family:
-        "Bebas Neue",
-        Impact,
-        sans-serif;
+    font-size: clamp(4rem, 7vw, 7rem);
 
-    color: #ff555a;
+    line-height: 1;
+
+    color: rgba(255, 70, 75, 0.65);
 }
 
 
 .label {
+    margin-top: 15px;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.2em;
+
+    font-weight: 400;
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* ==========================================================
+   DATE
+========================================================== */
+
+.date {
+    margin-top: 35px;
+
+    font-size: clamp(1rem, 1.5vw, 1.35rem);
+
+    letter-spacing: 0.45em;
 
     color: #fff;
 
-    white-space: nowrap;
+    text-shadow:
+        0 2px 10px #000;
 }
-
 
 
 /* ==========================================================
    ECG
-   ========================================================== */
+========================================================== */
 
 .ecg-divider {
+    width: min(600px, 65%);
+
+    height: 45px;
+
+    margin-top: 18px;
 
     display: flex;
 
     align-items: center;
+
+    justify-content: center;
 }
 
 
 .ecg-divider span {
+    height: 1px;
 
     flex: 1;
 
-    height: 1px;
-
     background:
         linear-gradient(
-            to right,
+            90deg,
             transparent,
-            #ff4147
+            #e9373e
         );
 }
 
 
 .ecg-divider span:last-child {
-
     background:
         linear-gradient(
-            to left,
-            transparent,
-            #ff4147
+            90deg,
+            #e9373e,
+            transparent
         );
 }
 
 
-.ecg polyline {
+.ecg {
+    width: 70px;
+    height: 40px;
 
-    fill: none;
-
-    stroke: #ff454b;
-
-    stroke-width: 2;
+    overflow: visible;
 }
 
 
+.ecg polyline {
+    fill: none;
+
+    stroke: #ff3f46;
+
+    stroke-width: 2;
+
+    vector-effect: non-scaling-stroke;
+
+    filter:
+        drop-shadow(0 0 4px #ff3038);
+}
+
 
 /* ==========================================================
-   MESSAGE
-   ========================================================== */
+   TEXT
+========================================================== */
+
+.forever {
+    margin-top: 8px;
+
+    font-size: 0.85rem;
+
+    letter-spacing: 0.3em;
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
 
 .always {
+    margin-top: 20px;
 
-    font-family:
-        "Allura",
-        cursive;
+    font-family: "Allura", cursive;
 
-    color: #ff4d52;
+    font-size: clamp(2.5rem, 4vw, 4rem);
+
+    color: #ff4148;
 
     text-shadow:
-        0 0 8px rgba(255, 20, 20, .8);
+        0 0 7px rgba(255, 30, 40, 0.8);
 }
 
 
 .small-heart {
+    font-family: Arial, sans-serif;
 
-    display: inline-block;
+    margin-left: 7px;
 
-    animation:
-        heartbeat
-        1.5s
-        infinite;
+    font-size: 0.9em;
+
+    color: #ff4148;
 }
 
 
-
 /* ==========================================================
-   PHONE
-   ========================================================== */
+   MOBILE
+   650px AND BELOW
+
+   ONE SCREEN
+   NO SCROLLING
+========================================================== */
 
 @media (max-width: 650px) {
 
-
-    /* ------------------------------------------------------
-       IMPORTANT
-
-       Entire experience = ONE visible phone viewport.
-       ------------------------------------------------------ */
-
-    html,
-    body {
-
-        width: 100%;
-
-        height: 100%;
-
-        overflow: hidden;
-    }
-
-
-    .landing {
-
-        width: 100%;
-
-        height: 100vh;
-
-        height: 100svh;
-
-        height: 100dvh;
-
-        min-height: 0;
-
-        overflow: hidden;
-    }
-
-
-
-    /* ======================================================
-       PHOTOS
-       ====================================================== */
-
-    .phone-photo {
-
-        position: absolute;
-
-        left: 0;
-
-        width: 100%;
-
-        background-repeat: no-repeat;
-
-        pointer-events: none;
-    }
-
-
-
-    /* ------------------------------------------------------
-       EYES
-
-       Occupies upper portion.
-       ------------------------------------------------------ */
-
-    .phone-eyes {
-
-        z-index: 1;
-
-        top: 0;
-
-        height: 53%;
-
-        background-image:
-            url("photo1.jpg");
-
-        background-size: cover;
-
-        /*
-           This controls the eyes crop.
-        */
-
-        background-position:
-            center 36%;
-
-        filter:
-            brightness(.78)
-            contrast(1.13)
-            saturate(.82);
-
-
-        -webkit-mask-image:
-            linear-gradient(
-                to bottom,
-
-                #000 0%,
-
-                #000 55%,
-
-                rgba(0,0,0,.95) 67%,
-
-                rgba(0,0,0,.55) 83%,
-
-                transparent 100%
-            );
-
-
-        mask-image:
-            linear-gradient(
-                to bottom,
-
-                #000 0%,
-
-                #000 55%,
-
-                rgba(0,0,0,.95) 67%,
-
-                rgba(0,0,0,.55) 83%,
-
-                transparent 100%
-            );
-    }
-
-
-
-    /* ------------------------------------------------------
-       HANDS
-
-       Starts around middle and fills bottom.
-       ------------------------------------------------------ */
-
-    .phone-hands {
-
-        z-index: 1;
-
-        bottom: 0;
-
-        height: 57%;
-
-        background-image:
-            url("photo2.jpg");
-
-        background-size: cover;
-
-        background-position:
-            center 48%;
-
-        filter:
-            brightness(.82)
-            contrast(1.08)
-            saturate(.82);
-
-
-        -webkit-mask-image:
-            linear-gradient(
-                to bottom,
-
-                transparent 0%,
-
-                rgba(0,0,0,.18) 12%,
-
-                rgba(0,0,0,.65) 28%,
-
-                #000 48%,
-
-                #000 100%
-            );
-
-
-        mask-image:
-            linear-gradient(
-                to bottom,
-
-                transparent 0%,
-
-                rgba(0,0,0,.18) 12%,
-
-                rgba(0,0,0,.65) 28%,
-
-                #000 48%,
-
-                #000 100%
-            );
-    }
-
-
-
-    /* ======================================================
-       CENTRAL BLEND
-
-       This is what makes them look like one poster.
-       ====================================================== */
-
-    .phone-blend {
-
-        position: absolute;
-
-        z-index: 2;
-
-        top: 28%;
-
-        left: 0;
-
-        width: 100%;
-
-        height: 50%;
-
-        pointer-events: none;
-
-
-        background:
-
-            radial-gradient(
-                ellipse at center,
-
-                rgba(90, 0, 0, .10),
-
-                rgba(0,0,0,.45) 45%,
-
-                transparent 76%
-            ),
-
-            linear-gradient(
-                to bottom,
-
-                transparent 0%,
-
-                rgba(0,0,0,.20) 12%,
-
-                rgba(0,0,0,.62) 38%,
-
-                rgba(0,0,0,.72) 52%,
-
-                rgba(0,0,0,.48) 72%,
-
-                transparent 100%
-            );
-    }
-
-
-
-    /* ======================================================
-       CINEMATIC OVERLAYS
-       ====================================================== */
-
-    .cinematic-grade {
-
-        position: absolute;
-
-        z-index: 3;
-
-        inset: 0;
-
-        pointer-events: none;
-
-
-        background:
-
-            linear-gradient(
-                to bottom,
-
-                rgba(20,0,0,.05),
-
-                transparent 18%,
-
-                rgba(0,0,0,.08) 45%,
-
-                rgba(0,0,0,.16) 75%,
-
-                rgba(0,0,0,.30)
-            ),
-
-            radial-gradient(
-                ellipse at 50% 38%,
-
-                transparent 0%,
-
-                rgba(30,0,0,.08) 48%,
-
-                rgba(0,0,0,.42) 100%
-            );
-    }
-
-
-    .red-glow {
-
-        position: absolute;
-
-        z-index: 4;
-
-        left: 50%;
-
-        top: 45%;
-
-        width: 120%;
-
-        height: 55%;
-
-        transform:
-            translate(-50%, -50%);
-
-        background:
-            radial-gradient(
-                ellipse,
-
-                rgba(255, 20, 30, .13),
-
-                transparent 68%
-            );
-
-        filter:
-            blur(25px);
-
-        pointer-events: none;
-    }
-
-
-    .vignette {
-
-        position: absolute;
-
-        z-index: 5;
-
-        inset: 0;
-
-        pointer-events: none;
-
-        box-shadow:
-            inset 0 0 70px 14px
-            rgba(0,0,0,.78);
-    }
-
-
-
-    /* DESKTOP ELEMENTS DON'T EXIST VISUALLY */
-
-    .desktop-eyes,
-    .desktop-hands-section {
-
-        display: none;
-    }
-
-
-
-    /* ======================================================
-       CONTENT
-
-       Positioned over the middle of both photos.
-       ====================================================== */
-
-    .content {
-
-        width: 100%;
-
-        height: 100%;
-
-        justify-content: flex-start;
-
-        padding:
-
-            max(
-                21vh,
-                env(safe-area-inset-top)
-            )
-
-            10px
-
-            max(
-                2vh,
-                env(safe-area-inset-bottom)
-            );
-    }
-
-
-
-    /* ======================================================
-       TITLE
-       ====================================================== */
-
-    .title h1 {
-
-        font-size:
-            clamp(
-                2rem,
-                10.5vw,
-                3.2rem
-            );
-
-        line-height: .95;
-
-        letter-spacing: .055em;
-
-        padding-left: .055em;
-
-        white-space: nowrap;
-    }
-
-
-    .title h2 {
-
-        margin-top: 1.2vh;
-
-        font-size:
-            clamp(
-                .88rem,
-                4.6vw,
-                1.3rem
-            );
-
-        line-height: 1;
-
-        letter-spacing: .36em;
-
-        padding-left: .36em;
-
-        white-space: nowrap;
-    }
-
-
-
-    /* ======================================================
-       HEART
-       ====================================================== */
-
-    .heart-divider {
-
-        width: 76%;
-
-        gap: 10px;
-
-        margin:
-            2.2vh
-            auto
-            3vh;
-    }
-
-
-    .heart {
-
-        font-size:
-            clamp(
-                1.25rem,
-                5vw,
-                1.7rem
-            );
-    }
-
-
-
-    /* ======================================================
-       COUNTDOWN
-       ====================================================== */
-
-    .countdown {
-
-        width: 100%;
-
-        display: grid;
-
-        grid-template-columns:
-            1fr
-            auto
-            1fr
-            auto
-            1fr
-            auto
-            1fr
-            auto
-            1fr;
-
-        align-items: start;
-
-        column-gap: 1px;
-    }
-
-
-    .time-box {
-
-        min-width: 0;
-    }
-
-
-    .number {
-
-        font-size:
-            clamp(
-                2.25rem,
-                11vw,
-                3.35rem
-            );
-
-        line-height: .86;
-
-        white-space: nowrap;
-    }
-
-
-    .colon {
-
-        font-size:
-            clamp(
-                1.7rem,
-                7vw,
-                2.4rem
-            );
-
-        line-height: .86;
-    }
-
-
-    .label {
-
-        margin-top: 1vh;
-
-        font-size:
-            clamp(
-                .28rem,
-                1.3vw,
-                .40rem
-            );
-
-        letter-spacing: 0;
-    }
-
-
-
-    /* ======================================================
-       DATE
-       ====================================================== */
-
-    .date {
-
-        margin-top: 4.2vh;
-
-        font-size:
-            clamp(
-                .58rem,
-                2.5vw,
-                .72rem
-            );
-
-        letter-spacing: .25em;
-
-        padding-left: .25em;
-
-        white-space: nowrap;
-    }
-
-
-
-    /* ======================================================
-       ECG
-       ====================================================== */
-
-    .ecg-divider {
-
-        width: 68%;
-
-        margin:
-            2.2vh
-            auto
-            1.8vh;
-    }
-
-
-    .ecg {
-
-        width:
-            clamp(
-                42px,
-                12vw,
-                54px
-            );
-
-        height:
-            clamp(
-                20px,
-                5vw,
-                28px
-            );
-    }
-
-
-
-    /* ======================================================
-       MESSAGE
-       ====================================================== */
-
-    .forever {
-
-        font-size:
-            clamp(
-                .40rem,
-                1.65vw,
-                .53rem
-            );
-
-        letter-spacing: .14em;
-
-        padding-left: .14em;
-
-        white-space: nowrap;
-    }
-
-
-    .always {
-
-        margin-top: 1.5vh;
-
-        font-size:
-            clamp(
-                1.65rem,
-                7.5vw,
-                2.3rem
-            );
-
-        white-space: nowrap;
-    }
-
-}
-
-
-
-/* ==========================================================
-   SHORT PHONE SCREENS
-
-   Example:
-   landscape-ish browser viewport,
-   older phones,
-   large browser bars.
-   ========================================================== */
-
-@media
-(max-width: 650px)
-and
-(max-height: 700px) {
-
-
-    .content {
-
-        padding-top: 16vh;
-    }
-
-
-    .title h1 {
-
-        font-size:
-            clamp(
-                1.8rem,
-                9.5vw,
-                2.8rem
-            );
-    }
-
-
-    .title h2 {
-
-        margin-top: .8vh;
-    }
-
-
-    .heart-divider {
-
-        margin:
-            1.5vh
-            auto
-            2vh;
-    }
-
-
-    .number {
-
-        font-size:
-            clamp(
-                2rem,
-                10vw,
-                3rem
-            );
-    }
-
-
-    .label {
-
-        margin-top: .7vh;
-    }
-
-
-    .date {
-
-        margin-top: 2.5vh;
-    }
-
-
-    .ecg-divider {
-
-        margin:
-            1.3vh
-            auto
-            1vh;
-    }
-
-
-    .always {
-
-        margin-top: .8vh;
-    }
-
-}
-
-
-
-/* ==========================================================
-   DESKTOP / LAPTOP
-   ========================================================== */
-
-@media (min-width: 651px) {
-
-
     html {
-
-        scroll-behavior: smooth;
-    }
-
-
-    body {
-
-        overflow-y: auto;
-    }
-
-
-
-    /* ======================================================
-       SCREEN 1
-       ====================================================== */
-
-    .landing {
-
-        height: 100vh;
-
-        min-height: 620px;
-
-        overflow: hidden;
-    }
-
-
-
-    /* PHONE PHOTOS OFF */
-
-    .phone-photo,
-    .phone-blend {
-
-        display: none;
-    }
-
-
-
-    /* ======================================================
-       EYES
-       ====================================================== */
-
-    .desktop-eyes {
-
-        position: absolute;
-
-        z-index: 1;
-
-        inset: 0;
-
-        background-image:
-            url("photo1.jpg");
-
-        background-size: cover;
-
-        background-position:
-            center center;
-
-        filter:
-            brightness(.58)
-            contrast(1.12)
-            saturate(.75);
-
-        animation:
-            desktopZoom
-            20s
-            ease-in-out
-            infinite
-            alternate;
-    }
-
-
-
-    /* ======================================================
-       CINEMATIC EFFECT
-       ====================================================== */
-
-    .cinematic-grade {
-
-        position: absolute;
-
-        z-index: 3;
-
-        inset: 0;
-
-
-        background:
-
-            linear-gradient(
-                to bottom,
-
-                rgba(0,0,0,.10),
-
-                rgba(0,0,0,.24) 45%,
-
-                rgba(0,0,0,.62)
-            ),
-
-            radial-gradient(
-                ellipse at center,
-
-                transparent 0%,
-
-                rgba(25,0,0,.12) 48%,
-
-                rgba(0,0,0,.58) 100%
-            );
-
-        pointer-events: none;
-    }
-
-
-    .red-glow {
-
-        position: absolute;
-
-        z-index: 4;
-
-        left: 50%;
-
-        top: 50%;
-
-        width: min(900px, 80vw);
-
-        height: 600px;
-
-        transform:
-            translate(-50%, -50%);
-
-
-        background:
-            radial-gradient(
-                ellipse,
-
-                rgba(255,20,25,.13),
-
-                transparent 68%
-            );
-
-        filter:
-            blur(40px);
-
-        pointer-events: none;
-    }
-
-
-    .vignette {
-
-        position: absolute;
-
-        z-index: 5;
-
-        inset: 0;
-
-        box-shadow:
-            inset 0 0 180px 60px
-            rgba(0,0,0,.90);
-
-        pointer-events: none;
-    }
-
-
-
-    /* ======================================================
-       CONTENT
-       ====================================================== */
-
-    .content {
-
         width: 100%;
+        height: 100%;
 
-        height: 100vh;
-
-        justify-content: center;
-
-        padding:
-            20px
-            30px;
-
-        transform:
-            translateY(-8px);
-    }
-
-
-
-    /* ======================================================
-       TITLE
-       ====================================================== */
-
-    .title h1 {
-
-        font-size:
-            clamp(
-                4rem,
-                7vw,
-                7.2rem
-            );
-
-        line-height: .88;
-
-        letter-spacing: .15em;
-
-        padding-left: .15em;
-    }
-
-
-    .title h2 {
-
-        margin-top: 20px;
-
-        font-size:
-            clamp(
-                1.25rem,
-                2.4vw,
-                2.4rem
-            );
-
-        letter-spacing: .65em;
-
-        padding-left: .65em;
-    }
-
-
-
-    /* ======================================================
-       HEART
-       ====================================================== */
-
-    .heart-divider {
-
-        width:
-            min(
-                630px,
-                65vw
-            );
-
-        gap: 18px;
-
-        margin:
-            27px
-            0
-            35px;
-    }
-
-
-    .heart {
-
-        font-size: 2rem;
-    }
-
-
-
-    /* ======================================================
-       COUNTDOWN
-       ====================================================== */
-
-    .countdown {
-
-        width:
-            min(
-                1050px,
-                92vw
-            );
-
-        display: flex;
-
-        justify-content: center;
-
-        align-items: flex-start;
-
-        gap:
-            clamp(
-                6px,
-                1.3vw,
-                22px
-            );
-    }
-
-
-    .time-box {
-
-        width:
-            clamp(
-                80px,
-                10vw,
-                145px
-            );
-    }
-
-
-    .number {
-
-        font-size:
-            clamp(
-                4rem,
-                7vw,
-                7.2rem
-            );
-
-        line-height: .9;
-    }
-
-
-    .colon {
-
-        font-size:
-            clamp(
-                3.5rem,
-                6vw,
-                6rem
-            );
-
-        line-height: .9;
-    }
-
-
-    .label {
-
-        margin-top: 14px;
-
-        font-size:
-            clamp(
-                .55rem,
-                .75vw,
-                .75rem
-            );
-
-        letter-spacing: .22em;
-    }
-
-
-
-    /* ======================================================
-       DATE
-       ====================================================== */
-
-    .date {
-
-        margin-top: 38px;
-
-        font-size:
-            clamp(
-                .75rem,
-                1.15vw,
-                1.05rem
-            );
-
-        letter-spacing: .55em;
-
-        padding-left: .55em;
-    }
-
-
-
-    /* ======================================================
-       ECG
-       ====================================================== */
-
-    .ecg-divider {
-
-        width:
-            min(
-                500px,
-                55vw
-            );
-
-        margin:
-            18px
-            0
-            15px;
-    }
-
-
-    .ecg {
-
-        width: 60px;
-
-        height: 30px;
-    }
-
-
-
-    /* ======================================================
-       TEXT
-       ====================================================== */
-
-    .forever {
-
-        font-size:
-            clamp(
-                .58rem,
-                .8vw,
-                .82rem
-            );
-
-        letter-spacing: .38em;
-
-        padding-left: .38em;
-    }
-
-
-    .always {
-
-        margin-top: 12px;
-
-        font-size:
-            clamp(
-                2rem,
-                3vw,
-                3rem
-            );
-    }
-
-
-
-    /* ======================================================
-       SCREEN 2 — HANDS
-       ====================================================== */
-
-    .desktop-hands-section {
-
-        position: relative;
-
-        display: block;
-
-        width: 100%;
-
-        height: 100vh;
-
-        min-height: 620px;
+        margin: 0;
+        padding: 0;
 
         overflow: hidden;
 
@@ -1440,274 +501,529 @@ and
     }
 
 
-    .desktop-hands-photo {
-
-        position: absolute;
-
-        z-index: 1;
+    body {
+        position: fixed;
 
         inset: 0;
 
+        width: 100%;
+        height: 100%;
 
-        background-image:
-            url("photo2.jpg");
+        margin: 0;
+        padding: 0;
 
-        background-size: cover;
+        overflow: hidden;
 
-        background-position:
-            center center;
-
-
-        filter:
-            brightness(.72)
-            contrast(1.08)
-            saturate(.82);
-
-        animation:
-            handsZoom
-            22s
-            ease-in-out
-            infinite
-            alternate;
+        background: #000;
     }
 
 
+    .landing {
+        position: fixed;
 
-    /* TOP DARK TRANSITION */
+        top: 0;
+        left: 0;
 
-    .desktop-hands-section::before {
+        width: 100vw;
 
-        content: "";
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
+
+        min-height: 0;
+
+        margin: 0;
+        padding: 0;
+
+        overflow: hidden;
+
+        background: #000;
+    }
+
+
+    /* ==========================================
+       REMOVE DESKTOP BACKGROUND
+    ========================================== */
+
+    .desktop-background {
+        display: none;
+    }
+
+
+    /* ==========================================
+       MOBILE BACKGROUND
+    ========================================== */
+
+    .mobile-background {
+        display: block;
 
         position: absolute;
 
-        z-index: 2;
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 100%;
+
+        z-index: 0;
+
+        overflow: hidden;
+
+        background: #000;
+    }
+
+
+    /* EYES IMAGE */
+
+    .mobile-eyes {
+        position: absolute;
 
         top: 0;
-
         left: 0;
 
         width: 100%;
 
-        height: 30%;
+        height: 50%;
 
+        background-image: url("photo1.jpg");
+
+        background-repeat: no-repeat;
+
+        background-size: cover;
+
+        background-position: center 35%;
+
+        z-index: 1;
+    }
+
+
+    /* HANDS IMAGE */
+
+    .mobile-hands {
+        position: absolute;
+
+        left: 0;
+        bottom: 0;
+
+        width: 100%;
+
+        height: 58%;
+
+        background-image: url("photo2.jpg");
+
+        background-repeat: no-repeat;
+
+        background-size: cover;
+
+        background-position: center center;
+
+        z-index: 1;
+    }
+
+
+    /* BLEND THE TWO PHOTOS */
+
+    .mobile-blend {
+        position: absolute;
+
+        left: 0;
+
+        top: 36%;
+
+        width: 100%;
+
+        height: 28%;
+
+        z-index: 2;
+
+        pointer-events: none;
 
         background:
             linear-gradient(
                 to bottom,
 
-                rgba(0,0,0,.75),
+                rgba(0, 0, 0, 0),
 
-                transparent
+                rgba(0, 0, 0, 0.65) 35%,
+
+                rgba(0, 0, 0, 0.82) 50%,
+
+                rgba(0, 0, 0, 0.55) 70%,
+
+                rgba(0, 0, 0, 0)
             );
-
-        pointer-events: none;
     }
 
 
+    /* ==========================================
+       CINEMATIC EFFECTS
+    ========================================== */
 
-    .hands-grade {
-
+    .cinematic-grade {
         position: absolute;
+
+        inset: 0;
 
         z-index: 3;
 
-        inset: 0;
-
-
         background:
-
             linear-gradient(
                 to bottom,
-
-                rgba(20,0,0,.10),
-
-                transparent 40%,
-
-                rgba(0,0,0,.35)
-            ),
-
-            radial-gradient(
-                ellipse at center,
-
-                transparent 25%,
-
-                rgba(0,0,0,.52) 100%
+                rgba(30, 0, 0, 0.05),
+                rgba(20, 0, 0, 0.12) 45%,
+                rgba(0, 0, 0, 0.25)
             );
-
-        pointer-events: none;
     }
 
 
-
-    .hands-vignette {
-
+    .vignette {
         position: absolute;
+
+        inset: 0;
 
         z-index: 4;
 
-        inset: 0;
-
-        box-shadow:
-            inset 0 0 180px 60px
-            rgba(0,0,0,.85);
-
-        pointer-events: none;
+        background:
+            radial-gradient(
+                ellipse at center,
+                transparent 35%,
+                rgba(0, 0, 0, 0.12) 60%,
+                rgba(0, 0, 0, 0.6) 100%
+            );
     }
 
 
-
-    .hands-message {
-
+    .red-glow {
         position: absolute;
+
+        inset: 0;
+
+        width: 100%;
+        height: 100%;
+
+        z-index: 5;
+
+        background:
+            radial-gradient(
+                ellipse at center 35%,
+                rgba(255, 30, 35, 0.08),
+                transparent 55%
+            );
+    }
+
+
+    /* ==========================================
+       CONTENT
+    ========================================== */
+
+    .content {
+        position: absolute;
+
+        top: 0;
+        left: 0;
 
         z-index: 10;
 
-        left: 50%;
+        width: 100%;
+        height: 100%;
 
-        bottom: 8vh;
+        margin: 0;
 
-        transform:
-            translateX(-50%);
+        padding:
+            max(10px, env(safe-area-inset-top))
+            12px
+            max(8px, env(safe-area-inset-bottom));
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        justify-content: flex-start;
 
         text-align: center;
+    }
+
+
+    /* ==========================================
+       TITLE
+    ========================================== */
+
+    .title {
+        width: 100%;
+
+        margin-top: 8vh;
+    }
+
+
+    .title h1 {
+        font-size: clamp(
+            2.35rem,
+            11vw,
+            4rem
+        );
+
+        line-height: 0.95;
+
+        letter-spacing: 0.08em;
 
         white-space: nowrap;
     }
 
 
-    .hands-message p {
+    .title h2 {
+        margin-top: 12px;
 
-        font-family:
-            "Allura",
-            cursive;
+        font-size: clamp(
+            1rem,
+            5vw,
+            1.5rem
+        );
 
-        font-size:
-            clamp(
-                2.5rem,
-                4vw,
-                4.5rem
-            );
+        letter-spacing: 0.35em;
 
-        color: #ff555a;
+        padding-left: 0.35em;
 
-        text-shadow:
-            0 0 15px rgba(255,0,0,.8);
+        white-space: nowrap;
     }
 
 
-    .hands-message span {
+    /* ==========================================
+       HEART LINE
+    ========================================== */
 
-        display: block;
+    .heart-divider {
+        width: 72%;
 
+        margin:
+            clamp(14px, 2.5vh, 22px)
+            auto
+            clamp(16px, 2.5vh, 22px);
+
+        gap: 12px;
+    }
+
+
+    .heart {
+        font-size: 1.9rem;
+    }
+
+
+    /* ==========================================
+       COUNTDOWN
+    ========================================== */
+
+    .countdown {
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+            1fr auto
+            1fr auto
+            1fr auto
+            1fr auto
+            1fr;
+
+        align-items: start;
+
+        justify-content: center;
+
+        gap: 3px;
+    }
+
+
+    .time-box {
+        min-width: 0;
+
+        width: 100%;
+    }
+
+
+    .number {
+        font-size: clamp(
+            3rem,
+            13vw,
+            4.6rem
+        );
+
+        line-height: 0.95;
+    }
+
+
+    .colon {
+        font-size: clamp(
+            2.5rem,
+            10vw,
+            4rem
+        );
+
+        line-height: 0.95;
+
+        padding-top: 2px;
+    }
+
+
+    .label {
+        margin-top: 8px;
+
+        font-size: clamp(
+            0.36rem,
+            1.7vw,
+            0.55rem
+        );
+
+        letter-spacing: 0.08em;
+    }
+
+
+    /* ==========================================
+       DATE
+    ========================================== */
+
+    .date {
+        margin-top: clamp(
+            25px,
+            4vh,
+            42px
+        );
+
+        font-size: clamp(
+            0.72rem,
+            3.2vw,
+            1rem
+        );
+
+        letter-spacing: 0.32em;
+
+        padding-left: 0.32em;
+
+        white-space: nowrap;
+    }
+
+
+    /* ==========================================
+       ECG
+    ========================================== */
+
+    .ecg-divider {
+        width: 72%;
+
+        height: 35px;
+
+        margin-top: 10px;
+    }
+
+
+    .ecg {
+        width: 55px;
+        height: 32px;
+    }
+
+
+    /* ==========================================
+       MESSAGE
+    ========================================== */
+
+    .forever {
+        margin-top: 8px;
+
+        font-size: clamp(
+            0.52rem,
+            2.2vw,
+            0.72rem
+        );
+
+        letter-spacing: 0.18em;
+
+        white-space: nowrap;
+    }
+
+
+    .always {
+        margin-top: clamp(
+            14px,
+            2vh,
+            24px
+        );
+
+        font-size: clamp(
+            2.2rem,
+            10vw,
+            3.7rem
+        );
+
+        line-height: 1;
+
+        white-space: nowrap;
+    }
+
+
+    .small-heart {
+        margin-left: 3px;
+    }
+
+}
+
+
+/* ==========================================================
+   SHORT PHONES
+========================================================== */
+
+@media (max-width: 650px) and (max-height: 700px) {
+
+    .title {
+        margin-top: 4vh;
+    }
+
+
+    .title h1 {
+        font-size: 2.5rem;
+    }
+
+
+    .title h2 {
+        margin-top: 8px;
+
+        font-size: 1rem;
+    }
+
+
+    .heart-divider {
+        margin: 10px auto 12px;
+    }
+
+
+    .number {
+        font-size: 3rem;
+    }
+
+
+    .colon {
+        font-size: 2.6rem;
+    }
+
+
+    .date {
+        margin-top: 20px;
+    }
+
+
+    .ecg-divider {
         margin-top: 5px;
-
-        font-size: 2rem;
-
-        color: #ff555a;
-
-        animation:
-            heartbeat
-            1.5s
-            infinite;
-    }
-
-}
-
-
-
-/* ==========================================================
-   ANIMATIONS
-   ========================================================== */
-
-@keyframes heartbeat {
-
-    0%,
-    100% {
-
-        transform:
-            scale(1);
     }
 
 
-    15% {
-
-        transform:
-            scale(1.20);
+    .forever {
+        margin-top: 3px;
     }
 
 
-    30% {
+    .always {
+        margin-top: 10px;
 
-        transform:
-            scale(1);
+        font-size: 2.4rem;
     }
 
-
-    45% {
-
-        transform:
-            scale(1.12);
-    }
-
-
-    60% {
-
-        transform:
-            scale(1);
-    }
-}
-
-
-
-@keyframes desktopZoom {
-
-    from {
-
-        transform:
-            scale(1.01);
-    }
-
-
-    to {
-
-        transform:
-            scale(1.055);
-    }
-}
-
-
-
-@keyframes handsZoom {
-
-    from {
-
-        transform:
-            scale(1.01);
-    }
-
-
-    to {
-
-        transform:
-            scale(1.045);
-    }
-}
-
-
-
-/* ==========================================================
-   ACCESSIBILITY
-   ========================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-
-        animation: none !important;
-
-        scroll-behavior: auto !important;
-    }
 }
