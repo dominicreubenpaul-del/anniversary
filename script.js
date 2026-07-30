@@ -6,7 +6,6 @@
    12:00 AM IST
    ========================================================== */
 
-
 const targetDate =
     new Date("2026-11-19T00:00:00+05:30");
 
@@ -27,20 +26,16 @@ const secondsElement =
     document.getElementById("seconds");
 
 
-/* ==============================
-   TWO DIGITS
-   ============================== */
-
 function twoDigits(value) {
 
     return String(value).padStart(2, "0");
-
 }
 
 
-/* ==============================
-   SAFELY ADD CALENDAR MONTHS
-   ============================== */
+
+/* ==========================================================
+   ADD CALENDAR MONTHS SAFELY
+   ========================================================== */
 
 function addCalendarMonths(date, months) {
 
@@ -52,11 +47,6 @@ function addCalendarMonths(date, months) {
         result.getDate();
 
 
-    /*
-       Move to day 1 first so dates such as
-       January 31 don't overflow incorrectly.
-    */
-
     result.setDate(1);
 
 
@@ -64,10 +54,6 @@ function addCalendarMonths(date, months) {
         result.getMonth() + months
     );
 
-
-    /*
-       Number of days in destination month
-    */
 
     const daysInMonth =
         new Date(
@@ -95,17 +81,12 @@ function addCalendarMonths(date, months) {
 }
 
 
-/* ==============================
+
+/* ==========================================================
    CALCULATE COUNTDOWN
-   ============================== */
+   ========================================================== */
 
 function calculateCountdown(now) {
-
-
-    /*
-       Approximate number of complete
-       calendar months remaining.
-    */
 
     let months =
 
@@ -133,11 +114,6 @@ function calculateCountdown(now) {
         );
 
 
-    /*
-       If adding those months passes
-       the anniversary, subtract one.
-    */
-
     if (afterMonths > targetDate) {
 
         months--;
@@ -150,19 +126,13 @@ function calculateCountdown(now) {
     }
 
 
-    /*
-       Remaining milliseconds after
-       complete calendar months.
-    */
-
     let difference =
         targetDate.getTime()
         -
         afterMonths.getTime();
 
 
-    const SECOND =
-        1000;
+    const SECOND = 1000;
 
     const MINUTE =
         SECOND * 60;
@@ -180,8 +150,7 @@ function calculateCountdown(now) {
         );
 
 
-    difference %=
-        DAY;
+    difference %= DAY;
 
 
     const hours =
@@ -190,8 +159,7 @@ function calculateCountdown(now) {
         );
 
 
-    difference %=
-        HOUR;
+    difference %= HOUR;
 
 
     const minutes =
@@ -200,8 +168,7 @@ function calculateCountdown(now) {
         );
 
 
-    difference %=
-        MINUTE;
+    difference %= MINUTE;
 
 
     const seconds =
@@ -222,9 +189,10 @@ function calculateCountdown(now) {
 }
 
 
-/* ==============================
+
+/* ==========================================================
    ANNIVERSARY REACHED
-   ============================== */
+   ========================================================== */
 
 function showAnniversary() {
 
@@ -249,9 +217,10 @@ function showAnniversary() {
 }
 
 
-/* ==============================
+
+/* ==========================================================
    UPDATE TIMER
-   ============================== */
+   ========================================================== */
 
 function updateCountdown() {
 
@@ -292,12 +261,13 @@ function updateCountdown() {
 }
 
 
-/* First update immediately */
+
+/* Run immediately */
 
 updateCountdown();
 
 
-/* Then every second */
+/* Update every second */
 
 setInterval(
     updateCountdown,
