@@ -30,100 +30,74 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
 <body>
-
-    <!-- ==========================================
-         CINEMATIC LANDING PAGE
-    =========================================== -->
 
     <main class="landing">
 
-        <!-- TOP / EYES PHOTO -->
+        <!-- ===============================
+             PHONE BACKGROUNDS
+             Both exist in same viewport
+        ================================ -->
 
-        <div class="photo-layer photo-eyes"></div>
+        <div class="phone-photo phone-eyes"></div>
+        <div class="phone-photo phone-hands"></div>
 
-
-        <!-- BOTTOM / HANDS PHOTO -->
-
-        <div class="photo-layer photo-hands"></div>
-
-
-        <!-- Blends both photographs -->
-
-        <div class="middle-darkness"></div>
+        <div class="phone-blend"></div>
 
 
-        <!-- Overall cinematic colour treatment -->
+        <!-- ===============================
+             DESKTOP SCREEN 1
+             Eyes
+        ================================ -->
+
+        <div class="desktop-eyes"></div>
+
+
+        <!-- ===============================
+             CINEMATIC EFFECTS
+        ================================ -->
 
         <div class="cinematic-grade"></div>
-
-
-        <!-- Dark edges -->
-
+        <div class="red-glow"></div>
         <div class="vignette"></div>
 
 
-        <!-- Red glow -->
-
-        <div class="red-glow"></div>
-
-
-        <!-- ======================================
-             MAIN CONTENT
-        ======================================= -->
+        <!-- ===============================
+             MAIN COUNTDOWN
+        ================================ -->
 
         <section class="content">
 
-
-            <!-- TITLE -->
-
             <header class="title">
 
-                <h1>
-                    ANNIVERSARY
-                </h1>
+                <h1>ANNIVERSARY</h1>
 
-                <h2>
-                    IS COMING
-                </h2>
+                <h2>IS COMING</h2>
 
             </header>
 
-
-            <!-- HEART LINE -->
 
             <div class="heart-divider">
 
                 <span></span>
 
-                <div class="heart">
-                    ♡
-                </div>
+                <div class="heart">♡</div>
 
                 <span></span>
 
             </div>
 
 
-            <!-- ==================================
-                 COUNTDOWN
-            =================================== -->
+            <!-- COUNTDOWN -->
 
             <section
                 class="countdown"
                 aria-label="Countdown to our anniversary"
             >
 
-
-                <!-- MONTHS -->
-
                 <div class="time-box">
 
-                    <div
-                        class="number"
-                        id="months"
-                    >
+                    <div class="number" id="months">
                         00
                     </div>
 
@@ -134,19 +108,12 @@
                 </div>
 
 
-                <div class="colon">
-                    :
-                </div>
+                <div class="colon">:</div>
 
-
-                <!-- DAYS -->
 
                 <div class="time-box">
 
-                    <div
-                        class="number"
-                        id="days"
-                    >
+                    <div class="number" id="days">
                         00
                     </div>
 
@@ -157,19 +124,12 @@
                 </div>
 
 
-                <div class="colon">
-                    :
-                </div>
+                <div class="colon">:</div>
 
-
-                <!-- HOURS -->
 
                 <div class="time-box">
 
-                    <div
-                        class="number"
-                        id="hours"
-                    >
+                    <div class="number" id="hours">
                         00
                     </div>
 
@@ -180,19 +140,12 @@
                 </div>
 
 
-                <div class="colon">
-                    :
-                </div>
+                <div class="colon">:</div>
 
-
-                <!-- MINUTES -->
 
                 <div class="time-box">
 
-                    <div
-                        class="number"
-                        id="minutes"
-                    >
+                    <div class="number" id="minutes">
                         00
                     </div>
 
@@ -203,19 +156,12 @@
                 </div>
 
 
-                <div class="colon">
-                    :
-                </div>
+                <div class="colon">:</div>
 
-
-                <!-- SECONDS -->
 
                 <div class="time-box">
 
-                    <div
-                        class="number"
-                        id="seconds"
-                    >
+                    <div class="number" id="seconds">
                         00
                     </div>
 
@@ -231,18 +177,15 @@
             <!-- DATE -->
 
             <div class="date">
-
                 19 NOVEMBER 2026
-
             </div>
 
 
-            <!-- ECG LINE -->
+            <!-- ECG -->
 
             <div class="ecg-divider">
 
                 <span></span>
-
 
                 <svg
                     class="ecg"
@@ -266,18 +209,13 @@
 
                 </svg>
 
-
                 <span></span>
 
             </div>
 
 
-            <!-- MESSAGE -->
-
             <p class="forever">
-
                 THE COUNTDOWN TO OUR FOREVER.
-
             </p>
 
 
@@ -291,36 +229,39 @@
 
             </p>
 
-
         </section>
 
-
-        <!-- ======================================
-             SCROLL INDICATOR
-        ======================================= -->
-
-        <div class="scroll-indicator">
-
-            <div class="mouse">
-
-                <div class="wheel"></div>
-
-            </div>
+    </main>
 
 
-            <div class="arrow">
-                ↓
-            </div>
+    <!-- =====================================
+         DESKTOP SCREEN 2
+         Hands reveal after scrolling
 
+         Hidden completely on phone.
+    ====================================== -->
+
+    <section class="desktop-hands-section">
+
+        <div class="desktop-hands-photo"></div>
+
+        <div class="hands-grade"></div>
+
+        <div class="hands-vignette"></div>
+
+        <div class="hands-message">
 
             <p>
-                SCROLL DOWN
+                You. Me. Always.
             </p>
+
+            <span>
+                ♡
+            </span>
 
         </div>
 
-
-    </main>
+    </section>
 
 
     <script src="script.js"></script>
