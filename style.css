@@ -23,23 +23,19 @@ body {
 
 
 /* ==========================================================
-   MAIN PAGE
+   LANDING
 ========================================================== */
 
 .landing {
     position: relative;
-
     width: 100%;
-    min-height: 200vh;
-
     background: #000;
-
-    overflow: hidden;
 }
 
 
 /* ==========================================================
    MOBILE BACKGROUND
+   Hidden on desktop
 ========================================================== */
 
 .mobile-background {
@@ -53,17 +49,16 @@ body {
 
 .desktop-background {
     position: absolute;
-
     inset: 0;
 
     width: 100%;
-    height: 100%;
+    height: 200vh;
 
     z-index: 0;
 }
 
 
-/* EYES */
+/* FIRST SCREEN — EYES */
 
 .desktop-eyes {
     position: absolute;
@@ -74,17 +69,24 @@ body {
     width: 100%;
     height: 100vh;
 
-    background-image: url("photo1.jpg");
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.15) 0%,
+            rgba(0, 0, 0, 0.18) 45%,
+            rgba(0, 0, 0, 0.85) 100%
+        ),
+        url("photo1.jpg");
 
     background-size: cover;
 
-    background-position: center 35%;
+    background-position: center center;
 
     background-repeat: no-repeat;
 }
 
 
-/* HANDS */
+/* SECOND SCREEN — HANDS */
 
 .desktop-hands {
     position: absolute;
@@ -95,11 +97,18 @@ body {
     width: 100%;
     height: 100vh;
 
-    background-image: url("photo2.jpg");
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 0.82) 0%,
+            rgba(0, 0, 0, 0.25) 35%,
+            rgba(0, 0, 0, 0.30) 100%
+        ),
+        url("photo2.jpg");
 
     background-size: cover;
 
-    background-position: center center;
+    background-position: center 40%;
 
     background-repeat: no-repeat;
 }
@@ -110,67 +119,62 @@ body {
 ========================================================== */
 
 .cinematic-grade {
-    position: absolute;
-
+    position: fixed;
     inset: 0;
 
-    z-index: 2;
-
     pointer-events: none;
+
+    z-index: 2;
 
     background:
         linear-gradient(
             180deg,
-            rgba(20, 0, 0, 0.08) 0%,
-            rgba(30, 0, 0, 0.18) 35%,
-            rgba(0, 0, 0, 0.28) 100%
+            rgba(20, 0, 0, 0.08),
+            rgba(0, 0, 0, 0.16)
         );
 }
 
 
 .vignette {
-    position: absolute;
-
+    position: fixed;
     inset: 0;
-
-    z-index: 3;
 
     pointer-events: none;
 
-    background:
-        radial-gradient(
-            ellipse at center,
-            transparent 35%,
-            rgba(0, 0, 0, 0.18) 60%,
-            rgba(0, 0, 0, 0.75) 100%
-        );
+    z-index: 3;
+
+    box-shadow:
+        inset 0 0 160px rgba(0, 0, 0, 0.9);
 }
 
 
 .red-glow {
-    position: absolute;
+    position: fixed;
 
-    top: 0;
-    left: 0;
+    left: 50%;
+    top: 38%;
 
-    width: 100%;
-    height: 100vh;
+    transform: translate(-50%, -50%);
 
-    z-index: 4;
+    width: 70vw;
+    height: 65vh;
 
     pointer-events: none;
 
+    z-index: 1;
+
     background:
         radial-gradient(
-            ellipse at center 42%,
-            rgba(255, 30, 30, 0.10),
-            transparent 55%
+            ellipse,
+            rgba(150, 0, 0, 0.12) 0%,
+            rgba(70, 0, 0, 0.05) 45%,
+            transparent 72%
         );
 }
 
 
 /* ==========================================================
-   CONTENT
+   DESKTOP CONTENT
 ========================================================== */
 
 .content {
@@ -178,19 +182,17 @@ body {
 
     z-index: 10;
 
-    width: min(1100px, 92%);
-
+    width: 100%;
     height: 100vh;
 
-    margin: 0 auto;
+    min-height: 650px;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: center;
-
     justify-content: center;
+
+    padding: 30px 40px 45px;
 
     text-align: center;
 }
@@ -203,35 +205,37 @@ body {
 .title h1 {
     font-family: "Cormorant Garamond", serif;
 
-    font-size: clamp(4rem, 7vw, 7.5rem);
+    font-size: clamp(62px, 6.5vw, 115px);
 
     font-weight: 500;
 
-    line-height: 0.85;
+    line-height: 0.88;
 
     letter-spacing: 0.13em;
 
     color: #fff;
 
     text-shadow:
-        0 3px 20px rgba(0, 0, 0, 0.8);
+        0 4px 20px rgba(0, 0, 0, 0.9);
 }
 
 
 .title h2 {
-    margin-top: 22px;
+    margin-top: 15px;
 
-    font-size: clamp(1.6rem, 3vw, 3rem);
+    font-size: clamp(25px, 2.5vw, 45px);
 
-    font-weight: 400;
+    font-weight: 300;
 
-    letter-spacing: 0.42em;
+    letter-spacing: 0.52em;
 
-    color: #ff5057;
+    padding-left: 0.52em;
+
+    color: #ff4d55;
 
     text-shadow:
-        0 0 8px rgba(255, 50, 60, 0.9),
-        0 0 22px rgba(255, 20, 30, 0.55);
+        0 0 8px rgba(255, 45, 55, 0.8),
+        0 0 18px rgba(255, 30, 40, 0.4);
 }
 
 
@@ -240,30 +244,28 @@ body {
 ========================================================== */
 
 .heart-divider {
-    width: min(680px, 75%);
-
-    margin: 25px auto 25px;
+    width: min(600px, 65vw);
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
-    gap: 18px;
+    gap: 20px;
+
+    margin: 24px auto 22px;
 }
 
 
 .heart-divider span {
-    height: 1px;
-
     flex: 1;
+
+    height: 1px;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            #e7383f
+            #ff333d
         );
 }
 
@@ -272,22 +274,21 @@ body {
     background:
         linear-gradient(
             90deg,
-            #e7383f,
+            #ff333d,
             transparent
         );
 }
 
 
 .heart {
-    color: #ff424a;
+    color: #ff4650;
 
-    font-size: 2.5rem;
+    font-size: 35px;
 
     line-height: 1;
 
     text-shadow:
-        0 0 8px #ff3038,
-        0 0 16px rgba(255, 20, 30, 0.6);
+        0 0 8px rgba(255, 40, 50, 0.9);
 }
 
 
@@ -296,20 +297,19 @@ body {
 ========================================================== */
 
 .countdown {
-    width: 100%;
+    width: min(1000px, 88vw);
 
     display: flex;
 
     align-items: flex-start;
-
     justify-content: center;
 
-    gap: clamp(12px, 2vw, 28px);
+    gap: clamp(10px, 2vw, 30px);
 }
 
 
 .time-box {
-    min-width: 120px;
+    width: clamp(100px, 11vw, 150px);
 
     text-align: center;
 }
@@ -318,40 +318,40 @@ body {
 .number {
     font-family: "Bebas Neue", sans-serif;
 
-    font-size: clamp(5rem, 8vw, 8rem);
+    font-size: clamp(70px, 7vw, 112px);
 
     line-height: 1;
 
-    color: #ff555b;
+    color: #ff555c;
 
     text-shadow:
-        0 0 6px rgba(255, 50, 55, 1),
-        0 0 16px rgba(255, 35, 40, 0.85),
-        0 0 32px rgba(255, 20, 30, 0.45);
+        0 0 5px #ff4048,
+        0 0 13px rgba(255, 30, 40, 0.8),
+        0 0 28px rgba(170, 0, 0, 0.45);
+}
+
+
+.label {
+    margin-top: 12px;
+
+    font-size: 12px;
+
+    font-weight: 400;
+
+    letter-spacing: 0.18em;
+
+    color: #fff;
 }
 
 
 .colon {
     font-family: "Bebas Neue", sans-serif;
 
-    font-size: clamp(4rem, 7vw, 7rem);
+    font-size: clamp(58px, 6vw, 95px);
 
-    line-height: 1;
+    line-height: 0.98;
 
-    color: rgba(255, 70, 75, 0.65);
-}
-
-
-.label {
-    margin-top: 15px;
-
-    font-size: 0.72rem;
-
-    letter-spacing: 0.2em;
-
-    font-weight: 400;
-
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 65, 72, 0.5);
 }
 
 
@@ -360,16 +360,18 @@ body {
 ========================================================== */
 
 .date {
-    margin-top: 35px;
+    margin-top: 31px;
 
-    font-size: clamp(1rem, 1.5vw, 1.35rem);
+    font-size: clamp(15px, 1.4vw, 22px);
 
-    letter-spacing: 0.45em;
+    letter-spacing: 0.48em;
+
+    padding-left: 0.48em;
 
     color: #fff;
 
     text-shadow:
-        0 2px 10px #000;
+        0 2px 8px #000;
 }
 
 
@@ -378,39 +380,34 @@ body {
 ========================================================== */
 
 .ecg-divider {
-    width: min(600px, 65%);
-
-    height: 45px;
-
-    margin-top: 18px;
+    width: min(540px, 55vw);
 
     display: flex;
-
     align-items: center;
 
-    justify-content: center;
+    margin: 19px auto 13px;
 }
 
 
-.ecg-divider span {
-    height: 1px;
-
+.ecg-divider > span {
     flex: 1;
+
+    height: 1px;
 
     background:
         linear-gradient(
             90deg,
             transparent,
-            #e9373e
+            #ff323c
         );
 }
 
 
-.ecg-divider span:last-child {
+.ecg-divider > span:last-child {
     background:
         linear-gradient(
             90deg,
-            #e9373e,
+            #ff323c,
             transparent
         );
 }
@@ -418,75 +415,101 @@ body {
 
 .ecg {
     width: 70px;
-    height: 40px;
-
-    overflow: visible;
+    height: 32px;
 }
 
 
 .ecg polyline {
     fill: none;
 
-    stroke: #ff3f46;
+    stroke: #ff3c46;
 
     stroke-width: 2;
 
     vector-effect: non-scaling-stroke;
 
     filter:
-        drop-shadow(0 0 4px #ff3038);
+        drop-shadow(0 0 4px #ff202b);
 }
 
 
 /* ==========================================================
-   TEXT
+   MESSAGE
 ========================================================== */
 
 .forever {
-    margin-top: 8px;
+    font-size: clamp(11px, 1vw, 15px);
 
-    font-size: 0.85rem;
+    letter-spacing: 0.32em;
 
-    letter-spacing: 0.3em;
+    padding-left: 0.32em;
 
     color: rgba(255, 255, 255, 0.9);
 }
 
 
 .always {
-    margin-top: 20px;
+    margin-top: 12px;
 
     font-family: "Allura", cursive;
 
-    font-size: clamp(2.5rem, 4vw, 4rem);
+    font-size: clamp(39px, 4vw, 65px);
 
-    color: #ff4148;
+    color: #ff454e;
+
+    line-height: 1;
 
     text-shadow:
-        0 0 7px rgba(255, 30, 40, 0.8);
+        0 0 7px rgba(255, 30, 40, 0.75);
 }
 
 
 .small-heart {
-    font-family: Arial, sans-serif;
+    display: inline-block;
 
     margin-left: 7px;
 
-    font-size: 0.9em;
+    font-family: Arial, sans-serif;
 
-    color: #ff4148;
+    font-size: 0.75em;
+}
+
+
+/* ==========================================================
+   DESKTOP PAGE HEIGHT
+
+   First viewport = eyes/content
+   Second viewport = hands
+========================================================== */
+
+@media (min-width: 769px) {
+
+    html,
+    body {
+        min-height: 200vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .landing {
+        min-height: 200vh;
+    }
+
 }
 
 
 /* ==========================================================
    MOBILE
-   650px AND BELOW
+   ----------------------------------------------------------
+   ONE VIEWPORT.
+   NO SCROLL.
+   NO EMPTY TOP SECTION.
 
-   ONE SCREEN
-   NO SCROLLING
+   Eyes occupy upper section.
+   Hands occupy lower section.
 ========================================================== */
 
-@media (max-width: 650px) {
+@media (max-width: 768px) {
 
     html {
         width: 100%;
@@ -495,19 +518,20 @@ body {
         margin: 0;
         padding: 0;
 
-        overflow: hidden;
-
         background: #000;
+
+        overflow: hidden;
     }
 
 
     body {
-        position: fixed;
-
-        inset: 0;
-
         width: 100%;
-        height: 100%;
+
+        height: 100vh;
+        height: 100svh;
+        height: 100dvh;
+
+        min-height: 0;
 
         margin: 0;
         padding: 0;
@@ -519,10 +543,7 @@ body {
 
 
     .landing {
-        position: fixed;
-
-        top: 0;
-        left: 0;
+        position: relative;
 
         width: 100vw;
 
@@ -541,9 +562,7 @@ body {
     }
 
 
-    /* ==========================================
-       REMOVE DESKTOP BACKGROUND
-    ========================================== */
+    /* Desktop images completely removed */
 
     .desktop-background {
         display: none;
@@ -551,7 +570,7 @@ body {
 
 
     /* ==========================================
-       MOBILE BACKGROUND
+       MOBILE PHOTO CANVAS
     ========================================== */
 
     .mobile-background {
@@ -559,21 +578,26 @@ body {
 
         position: absolute;
 
-        top: 0;
-        left: 0;
+        inset: 0;
 
         width: 100%;
         height: 100%;
 
-        z-index: 0;
-
         overflow: hidden;
+
+        z-index: 0;
 
         background: #000;
     }
 
 
-    /* EYES IMAGE */
+    /* ==========================================
+       EYES PHOTO
+
+       Starts EXACTLY at top: 0.
+       This is what removes the previous black
+       empty area.
+    ========================================== */
 
     .mobile-eyes {
         position: absolute;
@@ -583,95 +607,112 @@ body {
 
         width: 100%;
 
-        height: 50%;
+        height: 42%;
 
-        background-image: url("photo1.jpg");
-
-        background-repeat: no-repeat;
-
-        background-size: cover;
-
-        background-position: center 35%;
-
-        z-index: 1;
-    }
-
-
-    /* HANDS IMAGE */
-
-    .mobile-hands {
-        position: absolute;
-
-        left: 0;
-        bottom: 0;
-
-        width: 100%;
-
-        height: 58%;
-
-        background-image: url("photo2.jpg");
-
-        background-repeat: no-repeat;
+        background-image:
+            linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 0.08) 0%,
+                rgba(0, 0, 0, 0.05) 48%,
+                rgba(0, 0, 0, 0.45) 78%,
+                rgba(0, 0, 0, 1) 100%
+            ),
+            url("photo1.jpg");
 
         background-size: cover;
+
+        /*
+           Horizontal source photo:
+           keep faces/eyes visible.
+        */
 
         background-position: center center;
 
-        z-index: 1;
-    }
-
-
-    /* BLEND THE TWO PHOTOS */
-
-    .mobile-blend {
-        position: absolute;
-
-        left: 0;
-
-        top: 36%;
-
-        width: 100%;
-
-        height: 28%;
-
-        z-index: 2;
-
-        pointer-events: none;
-
-        background:
-            linear-gradient(
-                to bottom,
-
-                rgba(0, 0, 0, 0),
-
-                rgba(0, 0, 0, 0.65) 35%,
-
-                rgba(0, 0, 0, 0.82) 50%,
-
-                rgba(0, 0, 0, 0.55) 70%,
-
-                rgba(0, 0, 0, 0)
-            );
+        background-repeat: no-repeat;
     }
 
 
     /* ==========================================
-       CINEMATIC EFFECTS
+       HANDS PHOTO
+
+       Begins before eyes finish so the two
+       photographs overlap instead of creating
+       a black gap.
+    ========================================== */
+
+    .mobile-hands {
+        position: absolute;
+
+        top: 32%;
+        left: 0;
+
+        width: 100%;
+
+        height: 68%;
+
+        background-image:
+            linear-gradient(
+                to bottom,
+                rgba(0, 0, 0, 1) 0%,
+                rgba(0, 0, 0, 0.82) 9%,
+                rgba(0, 0, 0, 0.46) 23%,
+                rgba(0, 0, 0, 0.22) 48%,
+                rgba(0, 0, 0, 0.38) 100%
+            ),
+            url("photo2.jpg");
+
+        /*
+           photo2 is portrait.
+           Cover the lower portion of the phone.
+        */
+
+        background-size: cover;
+
+        background-position: center 36%;
+
+        background-repeat: no-repeat;
+    }
+
+
+    /* Smooth transition between photos */
+
+    .mobile-blend {
+        position: absolute;
+
+        top: 27%;
+        left: 0;
+
+        width: 100%;
+        height: 28%;
+
+        z-index: 2;
+
+        background:
+            linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(0, 0, 0, 0.35) 28%,
+                rgba(0, 0, 0, 0.78) 51%,
+                rgba(0, 0, 0, 0.34) 74%,
+                transparent 100%
+            );
+
+        pointer-events: none;
+    }
+
+
+    /* ==========================================
+       MOBILE CINEMATIC EFFECTS
     ========================================== */
 
     .cinematic-grade {
         position: absolute;
 
-        inset: 0;
-
-        z-index: 3;
-
         background:
             linear-gradient(
                 to bottom,
-                rgba(30, 0, 0, 0.05),
-                rgba(20, 0, 0, 0.12) 45%,
-                rgba(0, 0, 0, 0.25)
+                rgba(25, 0, 0, 0.04),
+                rgba(15, 0, 0, 0.10)
             );
     }
 
@@ -679,70 +720,50 @@ body {
     .vignette {
         position: absolute;
 
-        inset: 0;
-
-        z-index: 4;
-
-        background:
-            radial-gradient(
-                ellipse at center,
-                transparent 35%,
-                rgba(0, 0, 0, 0.12) 60%,
-                rgba(0, 0, 0, 0.6) 100%
-            );
+        box-shadow:
+            inset 0 0 70px rgba(0, 0, 0, 0.72);
     }
 
 
     .red-glow {
         position: absolute;
 
-        inset: 0;
+        top: 42%;
 
-        width: 100%;
-        height: 100%;
-
-        z-index: 5;
-
-        background:
-            radial-gradient(
-                ellipse at center 35%,
-                rgba(255, 30, 35, 0.08),
-                transparent 55%
-            );
+        width: 120vw;
+        height: 60vh;
     }
 
 
     /* ==========================================
-       CONTENT
+       MOBILE CONTENT
+
+       Everything stays inside one viewport.
     ========================================== */
 
     .content {
-        position: absolute;
-
-        top: 0;
-        left: 0;
+        position: relative;
 
         z-index: 10;
 
         width: 100%;
         height: 100%;
 
-        margin: 0;
-
-        padding:
-            max(10px, env(safe-area-inset-top))
-            12px
-            max(8px, env(safe-area-inset-bottom));
+        min-height: 0;
 
         display: flex;
-
         flex-direction: column;
-
         align-items: center;
-
         justify-content: flex-start;
 
+        padding:
+            max(4.2vh, env(safe-area-inset-top))
+            13px
+            max(10px, env(safe-area-inset-bottom));
+
         text-align: center;
+
+        overflow: hidden;
     }
 
 
@@ -753,65 +774,59 @@ body {
     .title {
         width: 100%;
 
-        margin-top: 8vh;
+        margin-top: 2.5vh;
     }
 
 
     .title h1 {
-        font-size: clamp(
-            2.35rem,
-            11vw,
-            4rem
-        );
+        font-size: clamp(38px, 11.5vw, 60px);
 
         line-height: 0.95;
 
-        letter-spacing: 0.08em;
+        letter-spacing: 0.055em;
+
+        padding-left: 0.055em;
 
         white-space: nowrap;
     }
 
 
     .title h2 {
-        margin-top: 12px;
+        margin-top: 1.3vh;
 
-        font-size: clamp(
-            1rem,
-            5vw,
-            1.5rem
-        );
+        font-size: clamp(17px, 5vw, 27px);
 
-        letter-spacing: 0.35em;
+        letter-spacing: 0.40em;
 
-        padding-left: 0.35em;
-
-        white-space: nowrap;
+        padding-left: 0.40em;
     }
 
 
     /* ==========================================
-       HEART LINE
+       HEART
     ========================================== */
 
     .heart-divider {
-        width: 72%;
-
-        margin:
-            clamp(14px, 2.5vh, 22px)
-            auto
-            clamp(16px, 2.5vh, 22px);
+        width: 76%;
 
         gap: 12px;
+
+        margin:
+            2.1vh
+            auto
+            2.5vh;
     }
 
 
     .heart {
-        font-size: 1.9rem;
+        font-size: clamp(23px, 7vw, 32px);
     }
 
 
     /* ==========================================
        COUNTDOWN
+
+       Force all five values onto one line.
     ========================================== */
 
     .countdown {
@@ -828,53 +843,42 @@ body {
 
         align-items: start;
 
-        justify-content: center;
+        gap: 2px;
 
-        gap: 3px;
+        padding: 0 4px;
     }
 
 
     .time-box {
+        width: auto;
         min-width: 0;
-
-        width: 100%;
     }
 
 
     .number {
-        font-size: clamp(
-            3rem,
-            13vw,
-            4.6rem
-        );
+        font-size: clamp(43px, 12vw, 65px);
 
         line-height: 0.95;
     }
 
 
     .colon {
-        font-size: clamp(
-            2.5rem,
-            10vw,
-            4rem
-        );
+        font-size: clamp(33px, 9vw, 48px);
 
         line-height: 0.95;
 
-        padding-top: 2px;
+        padding: 0 1px;
     }
 
 
     .label {
-        margin-top: 8px;
+        margin-top: 1.1vh;
 
-        font-size: clamp(
-            0.36rem,
-            1.7vw,
-            0.55rem
-        );
+        font-size: clamp(6px, 1.65vw, 9px);
 
-        letter-spacing: 0.08em;
+        letter-spacing: 0.04em;
+
+        white-space: nowrap;
     }
 
 
@@ -883,23 +887,13 @@ body {
     ========================================== */
 
     .date {
-        margin-top: clamp(
-            25px,
-            4vh,
-            42px
-        );
+        margin-top: 4vh;
 
-        font-size: clamp(
-            0.72rem,
-            3.2vw,
-            1rem
-        );
+        font-size: clamp(11px, 3vw, 16px);
 
-        letter-spacing: 0.32em;
+        letter-spacing: 0.30em;
 
-        padding-left: 0.32em;
-
-        white-space: nowrap;
+        padding-left: 0.30em;
     }
 
 
@@ -910,51 +904,36 @@ body {
     .ecg-divider {
         width: 72%;
 
-        height: 35px;
-
-        margin-top: 10px;
+        margin:
+            2.2vh
+            auto
+            1.5vh;
     }
 
 
     .ecg {
-        width: 55px;
-        height: 32px;
+        width: 50px;
+        height: 24px;
     }
 
 
     /* ==========================================
-       MESSAGE
+       TEXT
     ========================================== */
 
     .forever {
-        margin-top: 8px;
+        font-size: clamp(7px, 2vw, 10px);
 
-        font-size: clamp(
-            0.52rem,
-            2.2vw,
-            0.72rem
-        );
+        letter-spacing: 0.16em;
 
-        letter-spacing: 0.18em;
-
-        white-space: nowrap;
+        padding-left: 0.16em;
     }
 
 
     .always {
-        margin-top: clamp(
-            14px,
-            2vh,
-            24px
-        );
+        margin-top: 1.5vh;
 
-        font-size: clamp(
-            2.2rem,
-            10vw,
-            3.7rem
-        );
-
-        line-height: 1;
+        font-size: clamp(36px, 10vw, 53px);
 
         white-space: nowrap;
     }
@@ -969,61 +948,117 @@ body {
 
 /* ==========================================================
    SHORT PHONES
+
+   Example: landscape-ish browser viewport / large browser
+   toolbar taking vertical space.
 ========================================================== */
 
-@media (max-width: 650px) and (max-height: 700px) {
+@media (max-width: 768px) and (max-height: 700px) {
+
+    .content {
+        padding-top:
+            max(2vh, env(safe-area-inset-top));
+    }
+
 
     .title {
-        margin-top: 4vh;
+        margin-top: 1vh;
     }
 
 
     .title h1 {
-        font-size: 2.5rem;
+        font-size: clamp(34px, 10vw, 48px);
     }
 
 
     .title h2 {
-        margin-top: 8px;
+        margin-top: 0.8vh;
 
-        font-size: 1rem;
+        font-size: clamp(15px, 4.5vw, 21px);
     }
 
 
     .heart-divider {
-        margin: 10px auto 12px;
+        margin:
+            1.3vh
+            auto
+            1.5vh;
     }
 
 
     .number {
-        font-size: 3rem;
+        font-size: clamp(38px, 10.5vw, 54px);
     }
 
 
-    .colon {
-        font-size: 2.6rem;
+    .label {
+        margin-top: 0.7vh;
     }
 
 
     .date {
-        margin-top: 20px;
+        margin-top: 2.5vh;
     }
 
 
     .ecg-divider {
-        margin-top: 5px;
-    }
-
-
-    .forever {
-        margin-top: 3px;
+        margin:
+            1.4vh
+            auto
+            1vh;
     }
 
 
     .always {
-        margin-top: 10px;
+        margin-top: 1vh;
 
-        font-size: 2.4rem;
+        font-size: clamp(32px, 9vw, 45px);
+    }
+
+}
+
+
+/* ==========================================================
+   VERY NARROW PHONES
+========================================================== */
+
+@media (max-width: 380px) {
+
+    .title h1 {
+        font-size: 10.8vw;
+
+        letter-spacing: 0.035em;
+
+        padding-left: 0.035em;
+    }
+
+
+    .title h2 {
+        font-size: 4.5vw;
+
+        letter-spacing: 0.34em;
+
+        padding-left: 0.34em;
+    }
+
+
+    .number {
+        font-size: 11.2vw;
+    }
+
+
+    .colon {
+        font-size: 8vw;
+    }
+
+
+    .label {
+        font-size: 1.55vw;
+    }
+
+
+    .always {
+        font-size: 9.5vw;
     }
 
 }
